@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Xyz.TForce.MiniCasher.EventHandlers</RootNamespace>
+    <Authors>T-Force Xyz</Authors>
+    <Company>T-Force Xyz</Company>
+    <Copyright>T-Force Xyz</Copyright>
+    <Product>TFX Personal Money Manager</Product>
+    <Description>TFX Personal Money Manager</Description>
+    <Version>1.0.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+
+</Project>
