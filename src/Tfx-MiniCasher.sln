@@ -31,6 +31,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.EventHandlers
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Application", "2-Application", "{936B10F2-A1C6-4A32-86EC-F06C70699669}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.Data.Repositories", "TfxMiniCasher.Data.Repositories\TfxMiniCasher.Data.Repositories.csproj", "{BD780269-D99D-404A-A2A4-3BD0BDD403BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.Data.Migrations", "TfxMiniCasher.Data.Migrations\TfxMiniCasher.Data.Migrations.csproj", "{42A4E9C9-6E68-49CB-9FC0-6C58CC5CAC37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Infrastructures", "3-Infrastructures", "{6012795D-7260-4215-B361-2A1EA8705E0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +87,14 @@ Global
 		{1C076FF1-8C18-4242-A236-BA500C50208D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C076FF1-8C18-4242-A236-BA500C50208D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C076FF1-8C18-4242-A236-BA500C50208D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD780269-D99D-404A-A2A4-3BD0BDD403BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD780269-D99D-404A-A2A4-3BD0BDD403BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD780269-D99D-404A-A2A4-3BD0BDD403BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD780269-D99D-404A-A2A4-3BD0BDD403BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42A4E9C9-6E68-49CB-9FC0-6C58CC5CAC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42A4E9C9-6E68-49CB-9FC0-6C58CC5CAC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42A4E9C9-6E68-49CB-9FC0-6C58CC5CAC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42A4E9C9-6E68-49CB-9FC0-6C58CC5CAC37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +110,8 @@ Global
 		{FED1A939-2C4D-4B2B-936F-B94EDA48D327} = {936B10F2-A1C6-4A32-86EC-F06C70699669}
 		{FB30FFFB-87AF-46F9-93F7-5817AD5813C2} = {936B10F2-A1C6-4A32-86EC-F06C70699669}
 		{1C076FF1-8C18-4242-A236-BA500C50208D} = {936B10F2-A1C6-4A32-86EC-F06C70699669}
+		{BD780269-D99D-404A-A2A4-3BD0BDD403BC} = {6012795D-7260-4215-B361-2A1EA8705E0B}
+		{42A4E9C9-6E68-49CB-9FC0-6C58CC5CAC37} = {6012795D-7260-4215-B361-2A1EA8705E0B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2A2817DA-52AD-47BE-8D28-46EC7CC6CBA9}
