@@ -3,15 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasherWebHost", "TfxMiniCasherWebHost\TfxMiniCasherWebHost.csproj", "{27F6B715-62E8-4EA1-9079-009F5E4F7800}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxMiniCasherWebHost", "TfxMiniCasherWebHost\TfxMiniCasherWebHost.csproj", "{27F6B715-62E8-4EA1-9079-009F5E4F7800}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxArchetypes.DomainDrivenDevelopment", "TfxArchetypes.DomainDrivenDevelopment\TfxArchetypes.DomainDrivenDevelopment.csproj", "{09DC2962-A250-4DAD-92CD-58C1738C4D1D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxData.EntityFrameworkAdapter", "TfxData.EntityFrameworkAdapter\TfxData.EntityFrameworkAdapter.csproj", "{A81BC1AE-A289-4C24-AD05-CECBAEF6227A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.CrossCutting", "TfxMiniCasher.CrossCutting\TfxMiniCasher.CrossCutting.csproj", "{7E3113BC-B7D2-4F0A-8E0C-E68E280A8A10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxMiniCasher.CrossCutting", "TfxMiniCasher.CrossCutting\TfxMiniCasher.CrossCutting.csproj", "{7E3113BC-B7D2-4F0A-8E0C-E68E280A8A10}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-SharedComponents", "0-SharedComponents", "{E5A59356-2A42-47B9-ACC0-C1230B98D5EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.Domain", "TfxMiniCasher.Domain\TfxMiniCasher.Domain.csproj", "{D480D480-A2CA-4DF3-8AB1-C041F112D23B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.Domain.Contracts", "TfxMiniCasher.Domain.Contracts\TfxMiniCasher.Domain.Contracts.csproj", "{36C46391-B095-4BF7-A589-D250F791CF68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.Domain.Logic", "TfxMiniCasher.Domain.Logic\TfxMiniCasher.Domain.Logic.csproj", "{A647B96C-B313-427D-8F90-3103C49F5A25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Domain", "1-Domain", "{0EC9B2A7-DA12-4686-AFEB-9CB89611E8E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +43,18 @@ Global
 		{7E3113BC-B7D2-4F0A-8E0C-E68E280A8A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E3113BC-B7D2-4F0A-8E0C-E68E280A8A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E3113BC-B7D2-4F0A-8E0C-E68E280A8A10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D480D480-A2CA-4DF3-8AB1-C041F112D23B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D480D480-A2CA-4DF3-8AB1-C041F112D23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D480D480-A2CA-4DF3-8AB1-C041F112D23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D480D480-A2CA-4DF3-8AB1-C041F112D23B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36C46391-B095-4BF7-A589-D250F791CF68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36C46391-B095-4BF7-A589-D250F791CF68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36C46391-B095-4BF7-A589-D250F791CF68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36C46391-B095-4BF7-A589-D250F791CF68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A647B96C-B313-427D-8F90-3103C49F5A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A647B96C-B313-427D-8F90-3103C49F5A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A647B96C-B313-427D-8F90-3103C49F5A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A647B96C-B313-427D-8F90-3103C49F5A25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +63,9 @@ Global
 		{09DC2962-A250-4DAD-92CD-58C1738C4D1D} = {E5A59356-2A42-47B9-ACC0-C1230B98D5EA}
 		{A81BC1AE-A289-4C24-AD05-CECBAEF6227A} = {E5A59356-2A42-47B9-ACC0-C1230B98D5EA}
 		{7E3113BC-B7D2-4F0A-8E0C-E68E280A8A10} = {E5A59356-2A42-47B9-ACC0-C1230B98D5EA}
+		{D480D480-A2CA-4DF3-8AB1-C041F112D23B} = {0EC9B2A7-DA12-4686-AFEB-9CB89611E8E1}
+		{36C46391-B095-4BF7-A589-D250F791CF68} = {0EC9B2A7-DA12-4686-AFEB-9CB89611E8E1}
+		{A647B96C-B313-427D-8F90-3103C49F5A25} = {0EC9B2A7-DA12-4686-AFEB-9CB89611E8E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2A2817DA-52AD-47BE-8D28-46EC7CC6CBA9}
