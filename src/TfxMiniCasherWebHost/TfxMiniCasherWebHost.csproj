@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>Xyz.TForce.MiniCasher</RootNamespace>
+    <Authors>T-Force Xyz</Authors>
+    <Company>T-Force Xyz</Company>
+    <Copyright>T-Force Xyz</Copyright>
+    <Product>TFX Personal Money Manager</Product>
+    <Description>TFX Personal Money Manager</Description>
+    <Version>1.0.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+</Project>

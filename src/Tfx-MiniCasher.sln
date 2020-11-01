@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasherWebHost", "TfxMiniCasherWebHost\TfxMiniCasherWebHost.csproj", "{27F6B715-62E8-4EA1-9079-009F5E4F7800}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxArchetypes.DomainDrivenDevelopment", "TfxArchetypes.DomainDrivenDevelopment\TfxArchetypes.DomainDrivenDevelopment.csproj", "{09DC2962-A250-4DAD-92CD-58C1738C4D1D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxData.EntityFrameworkAdapter", "TfxData.EntityFrameworkAdapter\TfxData.EntityFrameworkAdapter.csproj", "{A81BC1AE-A289-4C24-AD05-CECBAEF6227A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.CrossCutting", "TfxMiniCasher.CrossCutting\TfxMiniCasher.CrossCutting.csproj", "{7E3113BC-B7D2-4F0A-8E0C-E68E280A8A10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-SharedComponents", "0-SharedComponents", "{E5A59356-2A42-47B9-ACC0-C1230B98D5EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27F6B715-62E8-4EA1-9079-009F5E4F7800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27F6B715-62E8-4EA1-9079-009F5E4F7800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27F6B715-62E8-4EA1-9079-009F5E4F7800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27F6B715-62E8-4EA1-9079-009F5E4F7800}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09DC2962-A250-4DAD-92CD-58C1738C4D1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09DC2962-A250-4DAD-92CD-58C1738C4D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09DC2962-A250-4DAD-92CD-58C1738C4D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09DC2962-A250-4DAD-92CD-58C1738C4D1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A81BC1AE-A289-4C24-AD05-CECBAEF6227A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A81BC1AE-A289-4C24-AD05-CECBAEF6227A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A81BC1AE-A289-4C24-AD05-CECBAEF6227A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A81BC1AE-A289-4C24-AD05-CECBAEF6227A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E3113BC-B7D2-4F0A-8E0C-E68E280A8A10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E3113BC-B7D2-4F0A-8E0C-E68E280A8A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E3113BC-B7D2-4F0A-8E0C-E68E280A8A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E3113BC-B7D2-4F0A-8E0C-E68E280A8A10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{09DC2962-A250-4DAD-92CD-58C1738C4D1D} = {E5A59356-2A42-47B9-ACC0-C1230B98D5EA}
+		{A81BC1AE-A289-4C24-AD05-CECBAEF6227A} = {E5A59356-2A42-47B9-ACC0-C1230B98D5EA}
+		{7E3113BC-B7D2-4F0A-8E0C-E68E280A8A10} = {E5A59356-2A42-47B9-ACC0-C1230B98D5EA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A2817DA-52AD-47BE-8D28-46EC7CC6CBA9}
+	EndGlobalSection
+EndGlobal
