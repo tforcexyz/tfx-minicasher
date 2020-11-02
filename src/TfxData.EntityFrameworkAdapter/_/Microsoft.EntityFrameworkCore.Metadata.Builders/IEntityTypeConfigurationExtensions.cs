@@ -32,6 +32,24 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Builders
     public static void ForeignKey<TEntity, TRelatedEntity>(this EntityTypeBuilder<TEntity> builder,
       Expression<Func<TEntity, object>> foreignKeyExpression,
       Expression<Func<TEntity, TRelatedEntity>> fordwardNavigationExpression,
+      Expression<Func<TRelatedEntity, object>> principalKeyExpression = null
+    )
+      where TEntity : class
+      where TRelatedEntity : class
+    {
+      ReferenceReferenceBuilder<TEntity, TRelatedEntity> refBuilder = builder.HasOne(fordwardNavigationExpression)
+        .WithOne()
+        .HasForeignKey(foreignKeyExpression)
+        .OnDelete(DeleteBehavior.Restrict);
+      if (principalKeyExpression != null)
+      {
+        _ = refBuilder.HasPrincipalKey(principalKeyExpression);
+      }
+    }
+
+    public static void ForeignKey<TEntity, TRelatedEntity>(this EntityTypeBuilder<TEntity> builder,
+      Expression<Func<TEntity, object>> foreignKeyExpression,
+      Expression<Func<TEntity, TRelatedEntity>> fordwardNavigationExpression,
       Expression<Func<TRelatedEntity, IEnumerable<TEntity>>> reversedNavigationExpression,
       Expression<Func<TRelatedEntity, object>> principalKeyExpression = null
     )

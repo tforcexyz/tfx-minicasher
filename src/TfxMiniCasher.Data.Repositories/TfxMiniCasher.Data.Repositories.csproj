@@ -13,4 +13,14 @@
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="TfxData" Version="1.0.0" />
+    <PackageReference Include="TfxDependencyInjection" Version="1.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TfxData.EntityFrameworkAdapter\TfxData.EntityFrameworkAdapter.csproj" />
+  </ItemGroup>
+
 </Project>

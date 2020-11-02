@@ -12,9 +12,9 @@ namespace Xyz.TForce.MiniCasher.Domain.Accounting.Entities
 
     public string TransactionName { get; set; }
 
-    public string DebitAccountCode { get; set; }
+    public Guid DebitAccountId { get; set; }
 
-    public string CreditAccountCode { get; set; }
+    public Guid CreditAccountId { get; set; }
 
     public decimal TransactionAmount { get; set; }
 
