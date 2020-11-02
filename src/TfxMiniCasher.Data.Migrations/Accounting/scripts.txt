@@ -1,0 +1,10 @@
+EntityFrameworkCore\Add-Migration Initialize -Context AccountingFirebirdSqlDbContext -OutputDir Accounting/firebird
+EntityFrameworkCore\Add-Migration Initialize -Context AccountingMySqlDbContext -OutputDir Accounting/mysql
+EntityFrameworkCore\Add-Migration Initialize -Context AccountingPostgreSqlDbContext -OutputDir Accounting/npgsql
+EntityFrameworkCore\Add-Migration Initialize -Context AccountingSqliteDbContext -OutputDir Accounting/sqlite
+EntityFrameworkCore\Add-Migration Initialize -Context AccountingSqlServerDbContext -OutputDir Accounting/mssql
+EntityFrameworkCore\Script-Migration -Context AccountingFirebirdSqlDbContext -From Initialize -To Initialize -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/firebird/00000000000001_Initialize.sql"
+EntityFrameworkCore\Script-Migration -Context AccountingMySqlDbContext -From Initialize -To Initialize -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/mysql/00000000000001_Initialize.sql"
+EntityFrameworkCore\Script-Migration -Context AccountingPostgreSqlDbContext -From Initialize -To Initialize -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/npgsql/00000000000001_Initialize.sql"
+EntityFrameworkCore\Script-Migration -Context AccountingSqliteDbContext -From Initialize -To Initialize -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/sqlite/00000000000001_Initialize.sql"
+EntityFrameworkCore\Script-Migration -Context AccountingSqlServerDbContext -From Initialize -To Initialize -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/mssql/00000000000001_Initialize.sql"
