@@ -3,8 +3,8 @@ EntityFrameworkCore\Add-Migration Initialize -Context AccountingMySqlDbContext -
 EntityFrameworkCore\Add-Migration Initialize -Context AccountingPostgreSqlDbContext -OutputDir Accounting/npgsql
 EntityFrameworkCore\Add-Migration Initialize -Context AccountingSqliteDbContext -OutputDir Accounting/sqlite
 EntityFrameworkCore\Add-Migration Initialize -Context AccountingSqlServerDbContext -OutputDir Accounting/mssql
-EntityFrameworkCore\Script-Migration -Context AccountingFirebirdSqlDbContext -From Initialize -To Initialize -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/firebird/00000000000001_Initialize.sql"
-EntityFrameworkCore\Script-Migration -Context AccountingMySqlDbContext -From Initialize -To Initialize -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/mysql/00000000000001_Initialize.sql"
-EntityFrameworkCore\Script-Migration -Context AccountingPostgreSqlDbContext -From Initialize -To Initialize -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/npgsql/00000000000001_Initialize.sql"
-EntityFrameworkCore\Script-Migration -Context AccountingSqliteDbContext -From Initialize -To Initialize -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/sqlite/00000000000001_Initialize.sql"
-EntityFrameworkCore\Script-Migration -Context AccountingSqlServerDbContext -From Initialize -To Initialize -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/mssql/00000000000001_Initialize.sql"
+EntityFrameworkCore\Script-Migration -Context AccountingFirebirdSqlDbContext -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/firebird/00000000000001_Initialize.sql" -From Initialize -To Initialize
+EntityFrameworkCore\Script-Migration -Context AccountingMySqlDbContext -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/mysql/00000000000001_Initialize.sql" -From Initialize -To Initialize
+EntityFrameworkCore\Script-Migration -Context AccountingPostgreSqlDbContext -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/npgsql/00000000000001_Initialize.sql" -From Initialize -To Initialize
+EntityFrameworkCore\Script-Migration -Context AccountingSqliteDbContext -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/sqlite/00000000000001_Initialize.sql" -From Initialize -To Initialize
+EntityFrameworkCore\Script-Migration -Context AccountingSqlServerDbContext -Output "./TfxMiniCasher.Data.Migrations/scripts/Accounting/mssql/00000000000001_Initialize.sql" -From Initialize -To Initialize
