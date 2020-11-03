@@ -16,7 +16,9 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities
 
     public string AccountDescription { get; set; }
 
-    public Guid ParentAccountId { get; set; }
+    public Guid? ParentAccountId { get; set; }
+
+    public Account ParentAccount { get; set; }
 
     public DebitCredit DebitOrCredit { get; set; }
 

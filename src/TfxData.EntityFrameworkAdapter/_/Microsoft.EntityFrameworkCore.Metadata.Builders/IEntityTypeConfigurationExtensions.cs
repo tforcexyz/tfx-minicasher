@@ -270,6 +270,15 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Builders
       }
     }
 
+    public static void Require<TEntity>(this EntityTypeBuilder<TEntity> builder,
+      Expression<Func<TEntity, object>> propertyExpression
+    )
+      where TEntity : class
+    {
+      _ = builder.Property(propertyExpression)
+        .IsRequired();
+    }
+
     public static void RowVersion<TEntity>(this EntityTypeBuilder<TEntity> builder,
       Expression<Func<TEntity, object>> propertyExpression
     )
