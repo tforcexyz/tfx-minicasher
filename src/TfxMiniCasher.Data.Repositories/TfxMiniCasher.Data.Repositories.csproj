@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TfxData.EntityFrameworkAdapter\TfxData.EntityFrameworkAdapter.csproj" />
+    <ProjectReference Include="..\TfxMiniCasher.Data.Contracts\TfxMiniCasher.Data.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

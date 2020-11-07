@@ -13,35 +13,35 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxMiniCasher.CrossCutting"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-SharedComponents", "0-SharedComponents", "{E5A59356-2A42-47B9-ACC0-C1230B98D5EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.Domain", "TfxMiniCasher.Domain\TfxMiniCasher.Domain.csproj", "{D480D480-A2CA-4DF3-8AB1-C041F112D23B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxMiniCasher.Domain", "TfxMiniCasher.Domain\TfxMiniCasher.Domain.csproj", "{D480D480-A2CA-4DF3-8AB1-C041F112D23B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.Domain.Contracts", "TfxMiniCasher.Domain.Contracts\TfxMiniCasher.Domain.Contracts.csproj", "{36C46391-B095-4BF7-A589-D250F791CF68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxMiniCasher.Domain.Contracts", "TfxMiniCasher.Domain.Contracts\TfxMiniCasher.Domain.Contracts.csproj", "{36C46391-B095-4BF7-A589-D250F791CF68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.Domain.Logic", "TfxMiniCasher.Domain.Logic\TfxMiniCasher.Domain.Logic.csproj", "{A647B96C-B313-427D-8F90-3103C49F5A25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxMiniCasher.Domain.Logic", "TfxMiniCasher.Domain.Logic\TfxMiniCasher.Domain.Logic.csproj", "{A647B96C-B313-427D-8F90-3103C49F5A25}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Domain", "1-Domain", "{0EC9B2A7-DA12-4686-AFEB-9CB89611E8E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.Application.Contracts", "TfxMiniCasher.Application.Contracts\TfxMiniCasher.Application.Contracts.csproj", "{02071CB5-6E76-4C47-B925-D498ED454869}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxMiniCasher.Application.Contracts", "TfxMiniCasher.Application.Contracts\TfxMiniCasher.Application.Contracts.csproj", "{02071CB5-6E76-4C47-B925-D498ED454869}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.Application.Logic", "TfxMiniCasher.Application.Logic\TfxMiniCasher.Application.Logic.csproj", "{FED1A939-2C4D-4B2B-936F-B94EDA48D327}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxMiniCasher.Application.Logic", "TfxMiniCasher.Application.Logic\TfxMiniCasher.Application.Logic.csproj", "{FED1A939-2C4D-4B2B-936F-B94EDA48D327}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.Data.Contracts", "TfxMiniCasher.Data.Contracts\TfxMiniCasher.Data.Contracts.csproj", "{FB30FFFB-87AF-46F9-93F7-5817AD5813C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxMiniCasher.Data.Contracts", "TfxMiniCasher.Data.Contracts\TfxMiniCasher.Data.Contracts.csproj", "{FB30FFFB-87AF-46F9-93F7-5817AD5813C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.EventHandlers", "TfxMiniCasher.EventHandlers\TfxMiniCasher.EventHandlers.csproj", "{1C076FF1-8C18-4242-A236-BA500C50208D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxMiniCasher.EventHandlers", "TfxMiniCasher.EventHandlers\TfxMiniCasher.EventHandlers.csproj", "{1C076FF1-8C18-4242-A236-BA500C50208D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Application", "2-Application", "{936B10F2-A1C6-4A32-86EC-F06C70699669}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.Data.Repositories", "TfxMiniCasher.Data.Repositories\TfxMiniCasher.Data.Repositories.csproj", "{BD780269-D99D-404A-A2A4-3BD0BDD403BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxMiniCasher.Data.Repositories", "TfxMiniCasher.Data.Repositories\TfxMiniCasher.Data.Repositories.csproj", "{BD780269-D99D-404A-A2A4-3BD0BDD403BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.Data.Migrations", "TfxMiniCasher.Data.Migrations\TfxMiniCasher.Data.Migrations.csproj", "{42A4E9C9-6E68-49CB-9FC0-6C58CC5CAC37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxMiniCasher.Data.Migrations", "TfxMiniCasher.Data.Migrations\TfxMiniCasher.Data.Migrations.csproj", "{42A4E9C9-6E68-49CB-9FC0-6C58CC5CAC37}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Infrastructures", "3-Infrastructures", "{6012795D-7260-4215-B361-2A1EA8705E0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.WebMvc", "TfxMiniCasher.WebMvc\TfxMiniCasher.WebMvc.csproj", "{92C1EEF6-CDA4-42C5-A19C-384E142E70DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxMiniCasher.WebMvc", "TfxMiniCasher.WebMvc\TfxMiniCasher.WebMvc.csproj", "{92C1EEF6-CDA4-42C5-A19C-384E142E70DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TfxMiniCasher.WebApi", "TfxMiniCasher.WebApi\TfxMiniCasher.WebApi.csproj", "{4F0187A4-2CBF-419C-9553-918E832D785B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TfxMiniCasher.WebApi", "TfxMiniCasher.WebApi\TfxMiniCasher.WebApi.csproj", "{4F0187A4-2CBF-419C-9553-918E832D785B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-User Interfaces", "4-User Interfaces", "{62AE5F4C-D0BE-4A49-86BB-BF6A58ADDC8C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-UserInterfaces", "4-UserInterfaces", "{62AE5F4C-D0BE-4A49-86BB-BF6A58ADDC8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
