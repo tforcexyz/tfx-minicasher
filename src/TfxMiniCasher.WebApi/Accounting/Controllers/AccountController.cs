@@ -1,17 +1,14 @@
 using Autofac;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Controllers
 {
 
-  public class AccountController : Controller
+  public class AccountController : ApiController
   {
 
-    private readonly IContainer _container;
-
     public AccountController(IContainer container)
+      : base(container)
     {
-      _container = container;
     }
   }
 }

@@ -5,7 +5,7 @@ using Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Specifications
 namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting
 {
 
-  [AutoInject(LifetimeScope = LifetimeScope.Singleton)]
+  [AutoInject(LifetimeScope = LifetimeScope.Scoped)]
   public class AccountingDbContext : DbContext
   {
 

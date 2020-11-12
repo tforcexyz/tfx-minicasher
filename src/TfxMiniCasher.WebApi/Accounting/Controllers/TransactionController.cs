@@ -4,14 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Controllers
 {
 
-  public class TransactionController : Controller
+  public class TransactionController : ApiController
   {
 
-    private readonly IContainer _container;
-
     public TransactionController(IContainer container)
+      : base(container)
     {
-      _container = container;
     }
   }
 }
