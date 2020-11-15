@@ -45,6 +45,29 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Controllers
       return Ok(response);
     }
 
+    [HttpGet]
+    [Route("{id}")]
+    public async Task<ActionResult<AccountGetResponse>> Get(Guid id, [FromQuery] AccountGetRequest request)
+    {
+      request.EnsureValidation();
+      AccountGetByIdArgs accountGetByIdArgs = new AccountGetByIdArgs
+      {
+        AccountId = id
+      };
+      IMediator mediator = Factory.Resolve<IMediator>();
+      AccountGetByIdResult accountGetByIdResult = await mediator.Send(new AccountGetByIdCommand(accountGetByIdArgs));
+      accountGetByIdResult.EnsureSuccess();
+      if (accountGetByIdResult.Result == null)
+      {
+        return NoContent();
+      }
+      AccountGetResponse response = new AccountGetResponse
+      {
+        Account = new AccountView(accountGetByIdResult.Result)
+      };
+      return Ok(response);
+    }
+
     [HttpPut]
     [Route("{id}")]
     public async Task<ActionResult<AccountModifyResponse>> Modify(Guid id, [FromBody] AccountModifyRequest request)

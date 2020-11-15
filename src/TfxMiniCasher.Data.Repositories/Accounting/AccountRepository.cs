@@ -26,6 +26,33 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting
       _context = context;
     }
 
+    public async Task<AccountFindResult> FindAsync(AccountFindArgs args)
+    {
+      AccountFindResult logicResult = new AccountFindResult();
+      try
+      {
+        AccountDTO result = await _context.Set<Account>().Where(x => x.AccountId == args.AccountId)
+          .Select(x => new AccountDTO
+          {
+            AccountId = x.AccountId,
+            AccountCode = x.AccountCode,
+            AccountName = x.AccountName,
+            AccountDescription = x.AccountDescription,
+            DebitOrCredit = x.DebitOrCredit.ToDomainType(),
+            IsHidden = x.IsHidden
+          })
+          .AsNoTracking()
+          .FirstOrDefaultAsync()
+          .ConfigureAwait(false);
+        logicResult.Result = result;
+      }
+      catch (Exception ex)
+      {
+        logicResult.Exception = ex;
+      }
+      return logicResult;
+    }
+
     public async Task<AccountInsertResult> InsertAsync(AccountInsertArgs args)
     {
       AccountInsertResult logicResult = new AccountInsertResult();

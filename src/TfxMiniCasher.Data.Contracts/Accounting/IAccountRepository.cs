@@ -7,6 +7,8 @@ namespace Xyz.TForce.MiniCasher.Data.Contracts.Accounting
   public interface IAccountRepository
   {
 
+    Task<AccountFindResult> FindAsync(AccountFindArgs args);
+
     Task<AccountInsertResult> InsertAsync(AccountInsertArgs args);
 
     Task<AccountSelectResult> SelectAsync(AccountSelectArgs args);
