@@ -8,5 +8,7 @@ namespace Xyz.TForce.MiniCasher.Data.Contracts.Accounting
   {
 
     Task<AccountInsertResult> InsertAsync(AccountInsertArgs args);
+
+    Task<AccountSelectResult> SelectAsync(AccountSelectArgs args);
   }
 }

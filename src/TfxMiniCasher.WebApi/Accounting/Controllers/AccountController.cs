@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using MediatR;
@@ -5,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Xyz.TForce.MiniCasher.Application.Contracts.Accounting.Commands;
 using Xyz.TForce.MiniCasher.Domain.Accounting.Models;
 using Xyz.TForce.MiniCasher.WebApi.Accounting.Models;
+using Xyz.TForce.MiniCasher.WebApi.Accounting.Models.Views;
 
 namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Controllers
 {
@@ -19,6 +21,7 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Controllers
     }
 
     [HttpPost]
+    [Route("")]
     public async Task<ActionResult<AccountCreateResponse>> Create([FromBody] AccountCreateRequest request)
     {
       request.EnsureValidation();
@@ -37,6 +40,24 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Controllers
       AccountCreateResponse response = new AccountCreateResponse
       {
         IsSuccess = true
+      };
+      return Ok(response);
+    }
+
+    [HttpGet]
+    [Route("")]
+    public async Task<ActionResult<AccountSearchResponse>> Search([FromQuery] AccountSearchRequest request)
+    {
+      request.EnsureValidation();
+      AccountSearchArgs accountSearchArgs = new AccountSearchArgs();
+      IMediator mediator = Factory.Resolve<IMediator>();
+      AccountSearchResult accountCreateResult = await mediator.Send(new AccountSearchCommand(accountSearchArgs));
+      accountCreateResult.EnsureSuccess();
+      AccountSearchResponse response = new AccountSearchResponse
+      {
+        Accounts = accountCreateResult.Results
+          .Select(x => { return new AccountView(x); })
+          .ToArray()
       };
       return Ok(response);
     }

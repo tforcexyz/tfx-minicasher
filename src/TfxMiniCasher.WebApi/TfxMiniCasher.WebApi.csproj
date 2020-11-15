@@ -22,9 +22,5 @@
   <ItemGroup>
     <ProjectReference Include="..\TfxMiniCasher.Application.Contracts\TfxMiniCasher.Application.Contracts.csproj" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Accounting\Models\Views\" />
-  </ItemGroup>
 
 </Project>
