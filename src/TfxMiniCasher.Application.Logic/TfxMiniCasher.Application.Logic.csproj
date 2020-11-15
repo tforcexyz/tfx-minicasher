@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TfxMiniCasher.Application.Contracts\TfxMiniCasher.Application.Contracts.csproj" />
+    <ProjectReference Include="..\TfxMiniCasher.Data.Contracts\TfxMiniCasher.Data.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

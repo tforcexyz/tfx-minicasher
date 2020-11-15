@@ -21,10 +21,17 @@ namespace Xyz.TForce.MiniCasher
 
     public void ConfigureServices(IServiceCollection services)
     {
+      DataConfig.ConfigureServices(services, _containerBuilder, _configuration);
+      MvcConfig.ConfigureServices(services, _configuration);
+      DependencyConfig.ConfigureServices(services, _containerBuilder, _configuration);
     }
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
+      DataConfig.ConfigureApp(app, env);
+      MvcConfig.ConfigureApp(app, env);
+      DependencyConfig.ConfigureApp(app, env);
     }
+
   }
 }
