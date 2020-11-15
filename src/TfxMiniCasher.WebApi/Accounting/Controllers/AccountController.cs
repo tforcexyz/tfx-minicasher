@@ -45,6 +45,25 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Controllers
       return Ok(response);
     }
 
+    [HttpDelete]
+    [Route("{id}")]
+    public async Task<ActionResult<AccountDeleteResponse>> Delete(Guid id, [FromQuery] AccountDeleteRequest request)
+    {
+      request.EnsureValidation();
+      AccountDeleteArgs accountDeleteArgs = new AccountDeleteArgs
+      {
+        AccountId = id
+      };
+      IMediator mediator = Factory.Resolve<IMediator>();
+      AccountDeleteResult accountDeleteResult = await mediator.Send(new AccountDeleteCommand(accountDeleteArgs));
+      accountDeleteResult.EnsureSuccess();
+      AccountDeleteResponse response = new AccountDeleteResponse
+      {
+        IsSuccess = true
+      };
+      return Ok(response);
+    }
+
     [HttpGet]
     [Route("{id}")]
     public async Task<ActionResult<AccountGetResponse>> Get(Guid id, [FromQuery] AccountGetRequest request)

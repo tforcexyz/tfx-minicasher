@@ -42,6 +42,11 @@ namespace Xyz.TForce.MiniCasher.Domain.Accounting.Entities
       return account;
     }
 
+    public static Guid Delete(AccountDeleteArgs args)
+    {
+      return args.AccountId;
+    }
+
     public static Account Modify(AccountModifyArgs args)
     {
       Account account = new Account

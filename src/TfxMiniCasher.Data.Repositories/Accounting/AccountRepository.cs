@@ -73,6 +73,25 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting
       return logicResult;
     }
 
+    public async Task<AccountRemoveResult> RemoveAsync(AccountRemoveArgs args)
+    {
+      AccountRemoveResult logicResult = new AccountRemoveResult();
+      try
+      {
+        Account existingAccount = await _context.Set<Account>().Where(x => x.AccountId == args.AccountId)
+          .FirstAsync()
+          .ConfigureAwait(false);
+        _context.Entry(existingAccount).State = EntityState.Deleted;
+        await _context.SaveChangesAsync()
+          .ConfigureAwait(false);
+      }
+      catch (Exception ex)
+      {
+        logicResult.Exception = ex;
+      }
+      return logicResult;
+    }
+
     public async Task<AccountSelectResult> SelectAsync(AccountSelectArgs args)
     {
       AccountSelectResult logicResult = new AccountSelectResult();
