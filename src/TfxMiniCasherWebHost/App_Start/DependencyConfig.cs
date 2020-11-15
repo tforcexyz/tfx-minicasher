@@ -22,6 +22,11 @@ namespace Xyz.TForce.MiniCasher
         return t => { return c.Resolve(t); };
       });
       _ = containerBuilder.RegisterType<Mediator>().As<IMediator>().SingleInstance();
+      containerBuilder.Register<ServiceFactory>(ctx =>
+      {
+        IComponentContext c = ctx.Resolve<IComponentContext>();
+        return t => c.Resolve(t);
+      });
       containerBuilder.RegisterAutoInjectClasses(typeof(InfrastructureDataModule).Assembly);
       containerBuilder.RegisterAutoInjectClasses(typeof(AppLogicModule).Assembly);
       IContainer container = containerBuilder.Build();

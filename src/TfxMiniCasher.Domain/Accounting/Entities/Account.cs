@@ -1,5 +1,6 @@
 using System;
 using Xyz.TForce.Archetypes.DomainDrivenDevelopment;
+using Xyz.TForce.MiniCasher.Domain.Accounting.Models;
 using Xyz.TForce.MiniCasher.Domain.Accounting.Types;
 
 namespace Xyz.TForce.MiniCasher.Domain.Accounting.Entities
@@ -7,6 +8,10 @@ namespace Xyz.TForce.MiniCasher.Domain.Accounting.Entities
 
   public class Account : BaseEntity, IAggregateRoot
   {
+
+    internal Account()
+    {
+    }
 
     public Guid AccountId { get; set; }
 
@@ -21,5 +26,20 @@ namespace Xyz.TForce.MiniCasher.Domain.Accounting.Entities
     public DebitCredit DebitOrCredit { get; set; }
 
     public bool IsHidden { get; set; }
+
+    public static Account Create(AccountCreateArgs args)
+    {
+      Account account = new Account
+      {
+        AccountId = Guid.NewGuid(),
+        AccountCode = args.AccountCode,
+        AccountName = args.AccountName,
+        AccountDescription = args.AccountDescription,
+        ParentAccountId = args.ParentAccountId,
+        DebitOrCredit = args.DebitOrCredit,
+        IsHidden = args.IsHidden
+      };
+      return account;
+    }
   }
 }
