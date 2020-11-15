@@ -41,5 +41,20 @@ namespace Xyz.TForce.MiniCasher.Domain.Accounting.Entities
       };
       return account;
     }
+
+    public static Account Modify(AccountModifyArgs args)
+    {
+      Account account = new Account
+      {
+        AccountId = args.AccountId,
+        AccountCode = args.AccountCode,
+        AccountName = args.AccountName,
+        AccountDescription = args.AccountDescription,
+        ParentAccountId = args.ParentAccountId,
+        DebitOrCredit = args.DebitOrCredit,
+        IsHidden = args.IsHidden
+      };
+      return account;
+    }
   }
 }

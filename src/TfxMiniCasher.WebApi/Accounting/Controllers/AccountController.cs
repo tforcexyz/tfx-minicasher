@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
@@ -38,6 +39,31 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Controllers
       AccountCreateResult accountCreateResult = await mediator.Send(new AccountCreateCommand(accountCreateArgs));
       accountCreateResult.EnsureSuccess();
       AccountCreateResponse response = new AccountCreateResponse
+      {
+        IsSuccess = true
+      };
+      return Ok(response);
+    }
+
+    [HttpPut]
+    [Route("{id}")]
+    public async Task<ActionResult<AccountModifyResponse>> Modify(Guid id, [FromBody] AccountModifyRequest request)
+    {
+      request.EnsureValidation();
+      AccountModifyArgs accountModifyArgs = new AccountModifyArgs
+      {
+        AccountId = id,
+        AccountCode = request.Code,
+        AccountName = request.Name,
+        AccountDescription = request.Description,
+        ParentAccountId = request.ParentId,
+        DebitOrCredit = request.DebitOrCredit,
+        IsHidden = request.IsHidden
+      };
+      IMediator mediator = Factory.Resolve<IMediator>();
+      AccountModifyResult accountModifyResult = await mediator.Send(new AccountModifyCommand(accountModifyArgs));
+      accountModifyResult.EnsureSuccess();
+      AccountModifyResponse response = new AccountModifyResponse
       {
         IsSuccess = true
       };
