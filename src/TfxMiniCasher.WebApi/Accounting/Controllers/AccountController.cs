@@ -47,9 +47,8 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Controllers
 
     [HttpDelete]
     [Route("{id}")]
-    public async Task<ActionResult<AccountDeleteResponse>> Delete(Guid id, [FromQuery] AccountDeleteRequest request)
+    public async Task<ActionResult<AccountDeleteResponse>> Delete(Guid id)
     {
-      request.EnsureValidation();
       AccountDeleteArgs accountDeleteArgs = new AccountDeleteArgs
       {
         AccountId = id
@@ -66,9 +65,8 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Controllers
 
     [HttpGet]
     [Route("{id}")]
-    public async Task<ActionResult<AccountGetResponse>> Get(Guid id, [FromQuery] AccountGetRequest request)
+    public async Task<ActionResult<AccountGetResponse>> Get(Guid id)
     {
-      request.EnsureValidation();
       AccountGetByIdArgs accountGetByIdArgs = new AccountGetByIdArgs
       {
         AccountId = id
@@ -124,7 +122,7 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Controllers
       AccountSearchResponse response = new AccountSearchResponse
       {
         Accounts = accountCreateResult.Results
-          .Select(x => { return new AccountView(x); })
+          .Select(x => { return new AccountLiteView(x); })
           .ToArray()
       };
       return Ok(response);
