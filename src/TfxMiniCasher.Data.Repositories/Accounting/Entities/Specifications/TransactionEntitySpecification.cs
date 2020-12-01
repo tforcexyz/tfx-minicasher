@@ -19,8 +19,8 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Specificat
       builder.Require(x => x.TransactionCode);
       builder.MaxLength(x => x.TransactionName, ColumnLengths.NameLength);
       builder.Require(x => x.TransactionName);
-      builder.ForeignKey(x => x.DebitAccountId, x => x.DebitAccount, principalKeyExpression: x => x.AccountId);
-      builder.ForeignKey(x => x.CreditAccountId, x => x.CreditAccount, principalKeyExpression: x => x.AccountId);
+      builder.ManyToOne(x => x.DebitAccountId, x => x.DebitAccount, principalKeyExpression: x => x.AccountId);
+      builder.ManyToOne(x => x.CreditAccountId, x => x.CreditAccount, principalKeyExpression: x => x.AccountId);
       builder.RowVersion(x => x.MetaRowVersion);
     }
   }

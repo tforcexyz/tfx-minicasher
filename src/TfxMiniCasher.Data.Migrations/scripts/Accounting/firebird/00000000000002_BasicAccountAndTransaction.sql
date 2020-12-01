@@ -1,4 +1,4 @@
-﻿CREATE TABLE "Accounting_Accounts" (
+CREATE TABLE "Accounting_Accounts" (
     "Id" BIGINT NOT NULL,
     "AccountId" CHAR(16) CHARACTER SET OCTETS NOT NULL,
     "AccountCode" VARCHAR(256) NOT NULL,
@@ -53,15 +53,15 @@ CREATE UNIQUE INDEX "UX_AccountCode" ON "Accounting_Accounts" ("AccountCode");
 
 CREATE UNIQUE INDEX "UX_AccountId" ON "Accounting_Accounts" ("AccountId");
 
-CREATE UNIQUE INDEX "IX_Accounting_Accounts_ParentA~" ON "Accounting_Accounts" ("ParentAccountId");
+CREATE INDEX "IX_Accounting_Accounts_ParentA~" ON "Accounting_Accounts" ("ParentAccountId");
 
 CREATE UNIQUE INDEX "UX_OptionCode" ON "Accounting_Options" ("OptionCode");
 
 CREATE UNIQUE INDEX "UX_OptionId" ON "Accounting_Options" ("OptionId");
 
-CREATE UNIQUE INDEX "IX_Accounting_Transactions_Cre~" ON "Accounting_Transactions" ("CreditAccountId");
+CREATE INDEX "IX_Accounting_Transactions_Cre~" ON "Accounting_Transactions" ("CreditAccountId");
 
-CREATE UNIQUE INDEX "IX_Accounting_Transactions_Deb~" ON "Accounting_Transactions" ("DebitAccountId");
+CREATE INDEX "IX_Accounting_Transactions_Deb~" ON "Accounting_Transactions" ("DebitAccountId");
 
 CREATE UNIQUE INDEX "UX_TransactionCode" ON "Accounting_Transactions" ("TransactionCode");
 

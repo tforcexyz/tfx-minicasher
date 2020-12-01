@@ -1,4 +1,4 @@
-﻿CREATE TABLE "Accounting_Accounts" (
+CREATE TABLE "Accounting_Accounts" (
     "Id" INTEGER NOT NULL CONSTRAINT "PK_Accounting_Accounts" PRIMARY KEY AUTOINCREMENT,
     "AccountId" BLOB NOT NULL,
     "AccountCode" TEXT NOT NULL,
@@ -50,15 +50,15 @@ CREATE UNIQUE INDEX "UX_AccountCode" ON "Accounting_Accounts" ("AccountCode");
 
 CREATE UNIQUE INDEX "UX_AccountId" ON "Accounting_Accounts" ("AccountId");
 
-CREATE UNIQUE INDEX "IX_Accounting_Accounts_ParentAccountId" ON "Accounting_Accounts" ("ParentAccountId");
+CREATE INDEX "IX_Accounting_Accounts_ParentAccountId" ON "Accounting_Accounts" ("ParentAccountId");
 
 CREATE UNIQUE INDEX "UX_OptionCode" ON "Accounting_Options" ("OptionCode");
 
 CREATE UNIQUE INDEX "UX_OptionId" ON "Accounting_Options" ("OptionId");
 
-CREATE UNIQUE INDEX "IX_Accounting_Transactions_CreditAccountId" ON "Accounting_Transactions" ("CreditAccountId");
+CREATE INDEX "IX_Accounting_Transactions_CreditAccountId" ON "Accounting_Transactions" ("CreditAccountId");
 
-CREATE UNIQUE INDEX "IX_Accounting_Transactions_DebitAccountId" ON "Accounting_Transactions" ("DebitAccountId");
+CREATE INDEX "IX_Accounting_Transactions_DebitAccountId" ON "Accounting_Transactions" ("DebitAccountId");
 
 CREATE UNIQUE INDEX "UX_TransactionCode" ON "Accounting_Transactions" ("TransactionCode");
 

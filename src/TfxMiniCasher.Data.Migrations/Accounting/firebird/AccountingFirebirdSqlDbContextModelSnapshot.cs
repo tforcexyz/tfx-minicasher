@@ -61,8 +61,7 @@ namespace Xyz.TForce.MiniCasher.Data.Migrations.Accounting.firebird
                         .IsUnique()
                         .HasName("UX_AccountId");
 
-                    b.HasIndex("ParentAccountId")
-                        .IsUnique();
+                    b.HasIndex("ParentAccountId");
 
                     b.ToTable("Accounting_Accounts");
                 });
@@ -149,11 +148,9 @@ namespace Xyz.TForce.MiniCasher.Data.Migrations.Accounting.firebird
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreditAccountId")
-                        .IsUnique();
+                    b.HasIndex("CreditAccountId");
 
-                    b.HasIndex("DebitAccountId")
-                        .IsUnique();
+                    b.HasIndex("DebitAccountId");
 
                     b.HasIndex("TransactionCode")
                         .IsUnique()
@@ -169,25 +166,25 @@ namespace Xyz.TForce.MiniCasher.Data.Migrations.Accounting.firebird
             modelBuilder.Entity("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", b =>
                 {
                     b.HasOne("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", "ParentAccount")
-                        .WithOne()
-                        .HasForeignKey("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", "ParentAccountId")
-                        .HasPrincipalKey("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", "AccountId")
+                        .WithMany()
+                        .HasForeignKey("ParentAccountId")
+                        .HasPrincipalKey("AccountId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Transaction", b =>
                 {
                     b.HasOne("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", "CreditAccount")
-                        .WithOne()
-                        .HasForeignKey("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Transaction", "CreditAccountId")
-                        .HasPrincipalKey("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", "AccountId")
+                        .WithMany()
+                        .HasForeignKey("CreditAccountId")
+                        .HasPrincipalKey("AccountId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", "DebitAccount")
-                        .WithOne()
-                        .HasForeignKey("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Transaction", "DebitAccountId")
+                        .WithMany()
+                        .HasForeignKey("DebitAccountId")
                         .HasConstraintName("FK_Accounting_Transactions_Ac~1")
-                        .HasPrincipalKey("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", "AccountId")
+                        .HasPrincipalKey("AccountId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618

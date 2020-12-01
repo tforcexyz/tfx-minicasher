@@ -20,7 +20,7 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Specificat
       builder.MaxLength(x => x.AccountName, ColumnLengths.NameLength);
       builder.Require(x => x.AccountName);
       builder.MaxLength(x => x.AccountDescription, ColumnLengths.SummaryLength);
-      builder.ForeignKey(x => x.ParentAccountId, x => x.ParentAccount, principalKeyExpression: x => x.AccountId);
+      builder.ManyToOne(x => x.ParentAccountId, x => x.ParentAccount, principalKeyExpression: x => x.AccountId);
       builder.RowVersion(x => x.MetaRowVersion);
     }
   }

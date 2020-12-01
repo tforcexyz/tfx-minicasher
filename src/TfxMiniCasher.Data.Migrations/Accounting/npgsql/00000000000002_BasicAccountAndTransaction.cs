@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -111,7 +111,7 @@ namespace Xyz.TForce.MiniCasher.Data.Migrations.Accounting.npgsql
                 name: "IX_Accounting_Accounts_ParentAccountId",
                 table: "Accounting_Accounts",
                 column: "ParentAccountId",
-                unique: true);
+                unique: false);
 
             migrationBuilder.CreateIndex(
                 name: "UX_OptionCode",
@@ -129,13 +129,13 @@ namespace Xyz.TForce.MiniCasher.Data.Migrations.Accounting.npgsql
                 name: "IX_Accounting_Transactions_CreditAccountId",
                 table: "Accounting_Transactions",
                 column: "CreditAccountId",
-                unique: true);
+                unique: false);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Accounting_Transactions_DebitAccountId",
                 table: "Accounting_Transactions",
                 column: "DebitAccountId",
-                unique: true);
+                unique: false);
 
             migrationBuilder.CreateIndex(
                 name: "UX_TransactionCode",

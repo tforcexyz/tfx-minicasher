@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Accounting_Accounts] (
+CREATE TABLE [Accounting_Accounts] (
     [Id] bigint NOT NULL IDENTITY,
     [AccountId] uniqueidentifier NOT NULL,
     [AccountCode] nvarchar(256) NOT NULL,
@@ -63,7 +63,7 @@ CREATE UNIQUE INDEX [UX_AccountId] ON [Accounting_Accounts] ([AccountId]);
 
 GO
 
-CREATE UNIQUE INDEX [IX_Accounting_Accounts_ParentAccountId] ON [Accounting_Accounts] ([ParentAccountId]) WHERE [ParentAccountId] IS NOT NULL;
+CREATE INDEX [IX_Accounting_Accounts_ParentAccountId] ON [Accounting_Accounts] ([ParentAccountId]);
 
 GO
 
@@ -75,11 +75,11 @@ CREATE UNIQUE INDEX [UX_OptionId] ON [Accounting_Options] ([OptionId]);
 
 GO
 
-CREATE UNIQUE INDEX [IX_Accounting_Transactions_CreditAccountId] ON [Accounting_Transactions] ([CreditAccountId]);
+CREATE INDEX [IX_Accounting_Transactions_CreditAccountId] ON [Accounting_Transactions] ([CreditAccountId]);
 
 GO
 
-CREATE UNIQUE INDEX [IX_Accounting_Transactions_DebitAccountId] ON [Accounting_Transactions] ([DebitAccountId]);
+CREATE INDEX [IX_Accounting_Transactions_DebitAccountId] ON [Accounting_Transactions] ([DebitAccountId]);
 
 GO
 

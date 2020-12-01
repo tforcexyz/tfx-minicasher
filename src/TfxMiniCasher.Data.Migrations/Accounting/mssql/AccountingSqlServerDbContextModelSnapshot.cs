@@ -64,9 +64,7 @@ namespace Xyz.TForce.MiniCasher.Data.Migrations.Accounting.mssql
                         .IsUnique()
                         .HasName("UX_AccountId");
 
-                    b.HasIndex("ParentAccountId")
-                        .IsUnique()
-                        .HasFilter("[ParentAccountId] IS NOT NULL");
+                    b.HasIndex("ParentAccountId");
 
                     b.ToTable("Accounting_Accounts");
                 });
@@ -155,11 +153,9 @@ namespace Xyz.TForce.MiniCasher.Data.Migrations.Accounting.mssql
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreditAccountId")
-                        .IsUnique();
+                    b.HasIndex("CreditAccountId");
 
-                    b.HasIndex("DebitAccountId")
-                        .IsUnique();
+                    b.HasIndex("DebitAccountId");
 
                     b.HasIndex("TransactionCode")
                         .IsUnique()
@@ -175,24 +171,24 @@ namespace Xyz.TForce.MiniCasher.Data.Migrations.Accounting.mssql
             modelBuilder.Entity("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", b =>
                 {
                     b.HasOne("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", "ParentAccount")
-                        .WithOne()
-                        .HasForeignKey("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", "ParentAccountId")
-                        .HasPrincipalKey("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", "AccountId")
+                        .WithMany()
+                        .HasForeignKey("ParentAccountId")
+                        .HasPrincipalKey("AccountId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Transaction", b =>
                 {
                     b.HasOne("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", "CreditAccount")
-                        .WithOne()
-                        .HasForeignKey("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Transaction", "CreditAccountId")
-                        .HasPrincipalKey("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", "AccountId")
+                        .WithMany()
+                        .HasForeignKey("CreditAccountId")
+                        .HasPrincipalKey("AccountId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", "DebitAccount")
-                        .WithOne()
-                        .HasForeignKey("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Transaction", "DebitAccountId")
-                        .HasPrincipalKey("Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities.Account", "AccountId")
+                        .WithMany()
+                        .HasForeignKey("DebitAccountId")
+                        .HasPrincipalKey("AccountId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618

@@ -10,17 +10,16 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Builders
   public static class EntityTypeBuilderExtensions
   {
 
-    public static void ForeignKey<TEntity, TRelatedEntity>(this EntityTypeBuilder<TEntity> builder,
+    public static void ManyToOne<TEntity, TRelatedEntity>(this EntityTypeBuilder<TEntity> builder,
       Expression<Func<TEntity, object>> foreignKeyExpression,
       Expression<Func<TEntity, TRelatedEntity>> fordwardNavigationExpression,
-      Expression<Func<TRelatedEntity, TEntity>> reversedNavigationExpression,
       Expression<Func<TRelatedEntity, object>> principalKeyExpression = null
     )
       where TEntity : class
       where TRelatedEntity : class
     {
-      ReferenceReferenceBuilder<TEntity, TRelatedEntity> refBuilder = builder.HasOne(fordwardNavigationExpression)
-        .WithOne(reversedNavigationExpression)
+      ReferenceCollectionBuilder<TRelatedEntity, TEntity> refBuilder = builder.HasOne(fordwardNavigationExpression)
+        .WithMany()
         .HasForeignKey(foreignKeyExpression)
         .OnDelete(DeleteBehavior.Restrict);
       if (principalKeyExpression != null)
@@ -29,25 +28,7 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Builders
       }
     }
 
-    public static void ForeignKey<TEntity, TRelatedEntity>(this EntityTypeBuilder<TEntity> builder,
-      Expression<Func<TEntity, object>> foreignKeyExpression,
-      Expression<Func<TEntity, TRelatedEntity>> fordwardNavigationExpression,
-      Expression<Func<TRelatedEntity, object>> principalKeyExpression = null
-    )
-      where TEntity : class
-      where TRelatedEntity : class
-    {
-      ReferenceReferenceBuilder<TEntity, TRelatedEntity> refBuilder = builder.HasOne(fordwardNavigationExpression)
-        .WithOne()
-        .HasForeignKey(foreignKeyExpression)
-        .OnDelete(DeleteBehavior.Restrict);
-      if (principalKeyExpression != null)
-      {
-        _ = refBuilder.HasPrincipalKey(principalKeyExpression);
-      }
-    }
-
-    public static void ForeignKey<TEntity, TRelatedEntity>(this EntityTypeBuilder<TEntity> builder,
+    public static void ManyToOne<TEntity, TRelatedEntity>(this EntityTypeBuilder<TEntity> builder,
       Expression<Func<TEntity, object>> foreignKeyExpression,
       Expression<Func<TEntity, TRelatedEntity>> fordwardNavigationExpression,
       Expression<Func<TRelatedEntity, IEnumerable<TEntity>>> reversedNavigationExpression,
@@ -175,6 +156,80 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Builders
     {
       _ = builder.Property(property1Expression)
         .HasMaxLength(maxLength);
+    }
+
+    public static void OneToMany<TEntity, TRelatedEntity>(this EntityTypeBuilder<TEntity> builder,
+      Expression<Func<TRelatedEntity, object>> foreignKeyExpression,
+      Expression<Func<TEntity, IEnumerable<TRelatedEntity>>> fordwardNavigationExpression,
+      Expression<Func<TEntity, object>> principalKeyExpression = null
+    )
+      where TEntity : class
+      where TRelatedEntity : class
+    {
+      ReferenceCollectionBuilder<TEntity, TRelatedEntity> refBuilder = builder.HasMany(fordwardNavigationExpression)
+        .WithOne()
+        .HasForeignKey(foreignKeyExpression)
+        .OnDelete(DeleteBehavior.Restrict);
+      if (principalKeyExpression != null)
+      {
+        _ = refBuilder.HasPrincipalKey(principalKeyExpression);
+      }
+    }
+
+    public static void OneToMany<TEntity, TRelatedEntity>(this EntityTypeBuilder<TEntity> builder,
+      Expression<Func<TRelatedEntity, object>> foreignKeyExpression,
+      Expression<Func<TEntity, IEnumerable<TRelatedEntity>>> fordwardNavigationExpression,
+      Expression<Func<TRelatedEntity, TEntity>> reversedNavigationExpression,
+      Expression<Func<TEntity, object>> principalKeyExpression = null
+    )
+      where TEntity : class
+      where TRelatedEntity : class
+    {
+      ReferenceCollectionBuilder<TEntity, TRelatedEntity> refBuilder = builder.HasMany(fordwardNavigationExpression)
+        .WithOne(reversedNavigationExpression)
+        .HasForeignKey(foreignKeyExpression)
+        .OnDelete(DeleteBehavior.Restrict);
+      if (principalKeyExpression != null)
+      {
+        _ = refBuilder.HasPrincipalKey(principalKeyExpression);
+      }
+    }
+
+    public static void OneToOne<TEntity, TRelatedEntity>(this EntityTypeBuilder<TEntity> builder,
+      Expression<Func<TEntity, object>> foreignKeyExpression,
+      Expression<Func<TEntity, TRelatedEntity>> fordwardNavigationExpression,
+      Expression<Func<TRelatedEntity, object>> principalKeyExpression = null
+    )
+      where TEntity : class
+      where TRelatedEntity : class
+    {
+      ReferenceReferenceBuilder<TEntity, TRelatedEntity> refBuilder = builder.HasOne(fordwardNavigationExpression)
+        .WithOne()
+        .HasForeignKey(foreignKeyExpression)
+        .OnDelete(DeleteBehavior.Restrict);
+      if (principalKeyExpression != null)
+      {
+        _ = refBuilder.HasPrincipalKey(principalKeyExpression);
+      }
+    }
+
+    public static void OneToOne<TEntity, TRelatedEntity>(this EntityTypeBuilder<TEntity> builder,
+      Expression<Func<TEntity, object>> foreignKeyExpression,
+      Expression<Func<TEntity, TRelatedEntity>> fordwardNavigationExpression,
+      Expression<Func<TRelatedEntity, TEntity>> reversedNavigationExpression,
+      Expression<Func<TRelatedEntity, object>> principalKeyExpression = null
+    )
+      where TEntity : class
+      where TRelatedEntity : class
+    {
+      ReferenceReferenceBuilder<TEntity, TRelatedEntity> refBuilder = builder.HasOne(fordwardNavigationExpression)
+        .WithOne(reversedNavigationExpression)
+        .HasForeignKey(foreignKeyExpression)
+        .OnDelete(DeleteBehavior.Restrict);
+      if (principalKeyExpression != null)
+      {
+        _ = refBuilder.HasPrincipalKey(principalKeyExpression);
+      }
     }
 
     public static void PrimaryKey<TEntity, TProperty1>(this EntityTypeBuilder<TEntity> builder,

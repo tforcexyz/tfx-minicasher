@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Xyz.TForce.MiniCasher.Data.Migrations.Accounting.firebird
@@ -107,7 +107,7 @@ namespace Xyz.TForce.MiniCasher.Data.Migrations.Accounting.firebird
                 name: "IX_Accounting_Accounts_ParentA~",
                 table: "Accounting_Accounts",
                 column: "ParentAccountId",
-                unique: true);
+                unique: false);
 
             migrationBuilder.CreateIndex(
                 name: "UX_OptionCode",
@@ -125,13 +125,13 @@ namespace Xyz.TForce.MiniCasher.Data.Migrations.Accounting.firebird
                 name: "IX_Accounting_Transactions_Cre~",
                 table: "Accounting_Transactions",
                 column: "CreditAccountId",
-                unique: true);
+                unique: false);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Accounting_Transactions_Deb~",
                 table: "Accounting_Transactions",
                 column: "DebitAccountId",
-                unique: true);
+                unique: false);
 
             migrationBuilder.CreateIndex(
                 name: "UX_TransactionCode",
