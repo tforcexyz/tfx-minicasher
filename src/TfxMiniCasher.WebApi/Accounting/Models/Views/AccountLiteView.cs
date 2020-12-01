@@ -14,6 +14,7 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Models.Views
       Code = dto.AccountCode;
       Name = dto.AccountName;
       DebitOrCredit = dto.DebitOrCredit;
+      ParentId = dto.ParentAccountId;
     }
 
     public Guid Id { get; set; }
@@ -23,5 +24,7 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Models.Views
     public string Name { get; set; }
 
     public DebitCredit DebitOrCredit { get; set; }
+
+    public Guid? ParentId { get; set; }
   }
 }

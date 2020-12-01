@@ -1,5 +1,6 @@
 using System;
 using Xyz.TForce.Archetypes.DomainDrivenDevelopment;
+using Xyz.TForce.MiniCasher.Domain.Accounting.DTOs;
 using Xyz.TForce.MiniCasher.Domain.Accounting.Models;
 using Xyz.TForce.MiniCasher.Domain.Accounting.Types;
 
@@ -13,7 +14,7 @@ namespace Xyz.TForce.MiniCasher.Domain.Accounting.Entities
     {
     }
 
-    public Guid AccountId { get; set; }
+    public Guid AccountId { get; private set; }
 
     public string AccountCode { get; set; }
 
@@ -47,19 +48,29 @@ namespace Xyz.TForce.MiniCasher.Domain.Accounting.Entities
       return args.AccountId;
     }
 
-    public static Account Modify(AccountModifyArgs args)
+    public static Account Load(AccountDTO dto)
     {
       Account account = new Account
       {
-        AccountId = args.AccountId,
-        AccountCode = args.AccountCode,
-        AccountName = args.AccountName,
-        AccountDescription = args.AccountDescription,
-        ParentAccountId = args.ParentAccountId,
-        DebitOrCredit = args.DebitOrCredit,
-        IsHidden = args.IsHidden
+        AccountId = dto.AccountId,
+        AccountCode = dto.AccountCode,
+        AccountName = dto.AccountName,
+        AccountDescription = dto.AccountDescription,
+        ParentAccountId = dto.ParentAccountId,
+        DebitOrCredit = dto.DebitOrCredit,
+        IsHidden = dto.IsHidden
       };
       return account;
+    }
+
+    public void Modify(AccountModifyArgs args)
+    {
+      AccountCode = args.AccountCode;
+      AccountName = args.AccountName;
+      AccountDescription = args.AccountDescription;
+      ParentAccountId = args.ParentAccountId;
+      DebitOrCredit = args.DebitOrCredit;
+      IsHidden = args.IsHidden;
     }
   }
 }

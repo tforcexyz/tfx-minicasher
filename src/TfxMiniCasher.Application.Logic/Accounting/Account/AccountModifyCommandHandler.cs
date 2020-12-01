@@ -29,7 +29,16 @@ namespace Xyz.TForce.MiniCasher.Application.Logic.Accounting
       AccountModifyResult logicResult = new AccountModifyResult();
       try
       {
-        Account account = Account.Modify(command.Args);
+        AccountFindArgs accountFindArgs = new AccountFindArgs
+        {
+          AccountId = command.Args.AccountId
+        };
+        AccountFindResult accountFindResult = await _accountRepository.FindAsync(accountFindArgs)
+          .ConfigureAwait(false);
+        accountFindResult.EnsureSuccess();
+
+        Account account = Account.Load(accountFindResult.Result);
+        account.Modify(command.Args);
         AccountUpdateArgs accountUpdateArgs = new AccountUpdateArgs
         {
           Account = account

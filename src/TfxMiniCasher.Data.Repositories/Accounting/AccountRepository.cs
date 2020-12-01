@@ -33,7 +33,6 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting
       {
         AccountDTO result = await _context.Set<Account>().Where(x => x.AccountId == args.AccountId)
           .Select(x => x.ToDTO())
-          .AsNoTracking()
           .FirstOrDefaultAsync()
           .ConfigureAwait(false);
         logicResult.Result = result;
@@ -98,6 +97,7 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting
             AccountName = x.AccountName,
             AccountDescription = x.AccountDescription,
             DebitOrCredit = x.DebitOrCredit.ToDomainType(),
+            ParentAccountId = x.ParentAccountId,
             IsHidden = x.IsHidden
           })
           .AsNoTracking()
