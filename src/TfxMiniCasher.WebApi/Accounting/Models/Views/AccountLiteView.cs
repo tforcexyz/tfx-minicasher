@@ -8,6 +8,10 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Models.Views
   public class AccountLiteView
   {
 
+    public AccountLiteView()
+    {
+    }
+
     public AccountLiteView(AccountDTO dto)
     {
       Id = dto.AccountId;

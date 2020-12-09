@@ -117,11 +117,11 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Controllers
       request.EnsureValidation();
       AccountSearchArgs accountSearchArgs = new AccountSearchArgs();
       IMediator mediator = Factory.Resolve<IMediator>();
-      AccountSearchResult accountCreateResult = await mediator.Send(new AccountSearchCommand(accountSearchArgs));
-      accountCreateResult.EnsureSuccess();
+      AccountSearchResult accountSearchResult = await mediator.Send(new AccountSearchCommand(accountSearchArgs));
+      accountSearchResult.EnsureSuccess();
       AccountSearchResponse response = new AccountSearchResponse
       {
-        Accounts = accountCreateResult.Results
+        Accounts = accountSearchResult.Results
           .Select(x => { return new AccountLiteView(x); })
           .ToArray()
       };
