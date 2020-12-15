@@ -1,6 +1,6 @@
 {
   "name": "tfx-minicasher",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "start": "cross-env NODE_ENV=development npm run build:assets && npm run serve",
     "build": "cross-env NODE_ENV=production npm run build:assets && npm run build:release",

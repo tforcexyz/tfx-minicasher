@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
-import { NbIconLibraries } from '@nebular/theme';
 import { NbMenuItem } from '@nebular/theme';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'miana-management',
+  templateUrl: './management.component.html',
 })
-export class AppComponent {
-
-  title = 'Angular10 Webpack';
+export class ManagementComponent {
 
   private menus: NbMenuItem[] = [
     {
@@ -66,12 +62,4 @@ export class AppComponent {
       icon: { icon: 'chart-line', pack: 'far' },
     },
   ];
-
-  constructor(private iconLibraries: NbIconLibraries) {
-    this.iconLibraries.registerFontPack('fa', { packClass: 'fa', iconClassPrefix: 'fa' });
-    this.iconLibraries.registerFontPack('fas', { packClass: 'fas', iconClassPrefix: 'fa' });
-    this.iconLibraries.registerFontPack('fad', { packClass: 'fad', iconClassPrefix: 'fa' });
-    this.iconLibraries.registerFontPack('fal', { packClass: 'fal', iconClassPrefix: 'fa' });
-    this.iconLibraries.registerFontPack('far', { packClass: 'far', iconClassPrefix: 'fa' });
-  }
 }

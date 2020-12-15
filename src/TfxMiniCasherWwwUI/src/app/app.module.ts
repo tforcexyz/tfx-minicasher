@@ -2,43 +2,44 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { NbChatModule } from '@nebular/theme';
+import { NbDatepickerModule } from '@nebular/theme';
+import { NbDialogModule } from '@nebular/theme';
+import { NbMenuModule } from '@nebular/theme';
+import { NbSidebarModule } from '@nebular/theme';
+import { NbToastrModule } from '@nebular/theme';
+import { NbWindowModule } from '@nebular/theme';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './@core/core.module';
+import { ManagementModule } from './management/management.module';
 import { ThemeModule } from './@theme/theme.module';
 
-import {
-  NbChatModule,
-  NbDatepickerModule,
-  NbDialogModule,
-  NbMenuModule,
-  NbSidebarModule,
-  NbToastrModule,
-  NbWindowModule,
-} from '@nebular/theme';
-
 @NgModule({
+  bootstrap: [
+    AppComponent
+  ],
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     HttpClientModule,
-    NbSidebarModule.forRoot(),
-    NbMenuModule.forRoot(),
-    NbDatepickerModule.forRoot(),
-    NbDialogModule.forRoot(),
-    NbWindowModule.forRoot(),
-    NbToastrModule.forRoot(),
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
+    NbDatepickerModule.forRoot(),
+    NbDialogModule.forRoot(),
+    NbMenuModule.forRoot(),
+    NbSidebarModule.forRoot(),
+    NbWindowModule.forRoot(),
+    NbToastrModule.forRoot(),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    AppRoutingModule,
+    ManagementModule,
   ],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }
