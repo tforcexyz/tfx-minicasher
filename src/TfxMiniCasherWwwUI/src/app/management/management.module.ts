@@ -4,7 +4,6 @@ import { NbMenuModule } from '@nebular/theme';
 
 import { ManagementComponent } from './management.component';
 import { ManagementRoutingModule } from './management-routing.module';
-import { ThemeModule } from '../@theme/theme.module';
 import { AccountManagerComponent } from './components/account-manager.component';
 
 @NgModule({
@@ -16,7 +15,6 @@ import { AccountManagerComponent } from './components/account-manager.component'
     ManagementRoutingModule,
     NbLayoutModule,
     NbMenuModule,
-    ThemeModule,
   ],
 })
 export class ManagementModule {

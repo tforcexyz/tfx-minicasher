@@ -12,9 +12,9 @@ import { NbWindowModule } from '@nebular/theme';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreModule } from './@core/core.module';
+import { CoreModule } from './@ngx-admin/@core/core.module';
 import { ManagementModule } from './management/management.module';
-import { ThemeModule } from './@theme/theme.module';
+import { ThemeModule } from './@ngx-admin/@theme/theme.module';
 
 @NgModule({
   bootstrap: [
