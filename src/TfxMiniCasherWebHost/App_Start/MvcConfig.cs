@@ -12,6 +12,7 @@ namespace Xyz.TForce.MiniCasher
 
     public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
     {
+      services.AddCors();
       services.AddMvc();
     }
 
@@ -19,6 +20,12 @@ namespace Xyz.TForce.MiniCasher
     {
       if (env.IsDevelopment())
       {
+        app.UseCors(options =>
+        {
+          options.AllowAnyHeader();
+          options.AllowAnyOrigin();
+        });
+          
         app.UseDeveloperExceptionPage();
       }
 

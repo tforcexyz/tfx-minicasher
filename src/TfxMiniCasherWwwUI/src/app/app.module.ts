@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { NbChatModule } from '@nebular/theme';
 import { NbDatepickerModule } from '@nebular/theme';
 import { NbDialogModule } from '@nebular/theme';
 import { NbMenuModule } from '@nebular/theme';
@@ -27,9 +26,6 @@ import { ThemeModule } from './@ngx-admin/@theme/theme.module';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NbChatModule.forRoot({
-      messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
-    }),
     NbDatepickerModule.forRoot(),
     NbDialogModule.forRoot(),
     NbMenuModule.forRoot(),
