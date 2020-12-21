@@ -36,6 +36,15 @@ task('app_css', function(callback) {
   callback();
 })
 
+task('app_img', function(callback) {
+  src([
+    `./src/favicon.ico`,
+    `./src/assets/**`,
+    ])
+    .pipe(dest(`./${outputDir}`));
+  callback();
+})
+
 task('app_js', function(callback) {
   src([
     `node_modules/pace-js/pace.min.js`,
@@ -76,5 +85,5 @@ task('watch', function(callback) {
   callback();
 })
 
-task('build', parallel('app_js', 'app_css'))
+task('build', parallel('app_css', 'app_img', 'app_js'))
 task('clean', series('remove_build'))
