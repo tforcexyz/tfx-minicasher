@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { NbDialogRef } from '@nebular/theme';
+import { NbDialogService } from '@nebular/theme';
 import { OnInit } from '@angular/core';
 
+import { AccountCreateDialogComponent } from './shared/account-create-dialog.component';
 import { AccountDataService } from '../../@data/services';
 import { AccountLite } from '../../@data/models/account';
 
@@ -10,9 +13,19 @@ import { AccountLite } from '../../@data/models/account';
 })
 export class AccountManagerComponent implements OnInit {
 
-  private accounts: AccountLite[];
+  accounts: AccountLite[];
+  dialogRef: NbDialogRef<AccountCreateDialogComponent>;
 
-  constructor(private accountDataService: AccountDataService) {
+  constructor(private accountDataService: AccountDataService,
+    private dialogService: NbDialogService) {
+  }
+
+  onCreateClick() {
+    this.dialogRef = this.dialogService.open(AccountCreateDialogComponent, {
+      closeOnBackdropClick: false,
+      closeOnEsc: true,
+      hasScroll: false,
+    });
   }
 
   ngOnInit(): void {

@@ -1,0 +1,37 @@
+<nb-card class="dialog-card">
+  <nb-card-header>
+    Create account
+  </nb-card-header>
+  <nb-card-body>
+    <div class="form-group">
+      <label class="label" for="account_create_code">Account code</label>
+      <input fullWidth id="account_create_code" name="account_code" nbInput placeholder="" type="text">
+    </div>
+    <div class="form-group">
+      <label class="label" for="account_create_name">Account name</label>
+      <input fullWidth id="account_create_name" name="account_name" nbInput placeholder="" type="text">
+    </div>
+    <div class="form-group">
+      <div><label class="label">Parent account</label></div>
+      <nb-select fullWidth name="account_parent_account_id" selected="">
+        <nb-option value="">None</nb-option>
+      </nb-select>
+    </div>
+    <div class="form-group">
+      <label class="label">Account type</label>
+      <nb-radio-group inline>
+        <nb-radio value="1">Debit account</nb-radio>
+        <nb-radio value="-1">Credit account</nb-radio>
+      </nb-radio-group>
+    </div>
+    <div class="form-group">
+      <div><label class="label">Visibility</label></div>
+      <nb-checkbox>This account will be hidden in all screens except Account Manager page.</nb-checkbox>
+    </div>
+  </nb-card-body>
+  <nb-card-footer class="text-right">
+    <button nbButton status="primary" (click)="dismiss()">Submit</button>
+    &nbsp;
+    <button nbButton status="basic" (click)="dismiss()">Cancel</button>
+  </nb-card-footer>
+</nb-card>

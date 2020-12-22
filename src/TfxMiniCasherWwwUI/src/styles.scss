@@ -4,3 +4,39 @@
 @import '~nebular-icons/scss/nebular-icons';
 @import '~pace-js/themes/red/pace-theme-flash';
 @import './app/@ngx-admin/@theme/styles/styles';
+@import '~bootstrap/scss/_variables.scss';
+
+nb-card.dialog-card {
+  min-width: $modal-md;
+
+  &.modal-sm {
+    min-width: $modal-sm;
+  }
+
+  &.modal-md {
+    min-width: $modal-md;
+  }
+
+  &.modal-lg {
+    min-width: $modal-lg;
+  }
+
+  &.modal-xl {
+    min-width: $modal-xl;
+  }
+}
+
+nb-radio-group[inline] {
+  display: block;
+
+  nb-radio {
+    display: inline-block;
+  }
+}
+
+.nb-theme-default [nbButton].size-medium {
+
+  nb-icon.fad, nb-icon.fal, nb-icon.far, nb-icon.fas {
+    font-size: 1.25rem;
+  }
+}
