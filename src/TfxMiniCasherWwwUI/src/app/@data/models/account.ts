@@ -9,6 +9,13 @@ export interface Account {
   isHidden: boolean,
 }
 
+export interface AccountHierarchy {
+  id: string;
+  code: string;
+  name: string;
+  children: AccountHierarchy[];
+}
+
 export interface AccountLite {
   id: string;
   code: string;

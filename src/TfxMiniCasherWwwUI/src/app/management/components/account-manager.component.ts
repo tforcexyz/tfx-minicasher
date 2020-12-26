@@ -4,6 +4,7 @@ import { NbDialogService } from '@nebular/theme';
 import { OnInit } from '@angular/core';
 
 import { AccountCreateDialogComponent } from './shared/account-create-dialog.component';
+import { AccountCreateDialogResult } from './shared/account-create-dialog.component';
 import { AccountDataService } from '../../@data/services';
 import { AccountLite } from '../../@data/models/account';
 
@@ -26,9 +27,18 @@ export class AccountManagerComponent implements OnInit {
       closeOnEsc: true,
       hasScroll: false,
     });
+    this.dialogRef.onClose.subscribe((result: AccountCreateDialogResult) => {
+      if(result.refresh) {
+        this.searchAccounts();
+      }
+    })
   }
 
   ngOnInit(): void {
+    this.searchAccounts();
+  }
+
+  searchAccounts() {
     this.accountDataService.searchAccounts().subscribe(response => {
       this.accounts = response.accounts;
     });
