@@ -85,6 +85,26 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Controllers
       return Ok(response);
     }
 
+    [HttpGet]
+    [Route("hierarchy")]
+    public async Task<ActionResult<AccountGetHierarchyResponse>> GetHierarchy([FromQuery] AccountGetHierarchyRequest request)
+    {
+      AccountGetHierarchyArgs accountGetHierarchyArgs = new AccountGetHierarchyArgs
+      {
+      };
+      IMediator mediator = Factory.Resolve<IMediator>();
+      AccountGetHierarchyResult accountGetHierarchyResult = await mediator.Send(new AccountGetHierarchyCommand(accountGetHierarchyArgs));
+      accountGetHierarchyResult.EnsureSuccess();
+      AccountHierarchyView[] accountHierarchyViews = accountGetHierarchyResult.Results
+        .Select(AccountConverter.ToAccountHierarchy)
+        .ToArray();
+      AccountGetHierarchyResponse response = new AccountGetHierarchyResponse
+      {
+        Accounts = accountHierarchyViews,
+      };
+      return Ok(response);
+    }
+
     [HttpPut]
     [Route("{id}")]
     public async Task<ActionResult<AccountModifyResponse>> Modify(Guid id, [FromBody] AccountModifyRequest request)

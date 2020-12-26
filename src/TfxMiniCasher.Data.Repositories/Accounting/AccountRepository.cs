@@ -50,11 +50,10 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting
       try
       {
         Account entity = args.Account.ToEntity();
-        entity.AccountId = Guid.NewGuid();
         entity.MetaCreatedTimeCode = DateTime.UtcNow.ToSuperEpochUtc();
         entity.MetaModifiedTimeCode = DateTime.UtcNow.ToSuperEpochUtc();
-        _context.Add(entity);
-        await _context.SaveChangesAsync()
+        _ = _context.Add(entity);
+        _ = await _context.SaveChangesAsync()
           .ConfigureAwait(false);
       }
       catch (Exception ex)
@@ -73,7 +72,7 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting
           .FirstAsync()
           .ConfigureAwait(false);
         _context.Entry(existingAccount).State = EntityState.Deleted;
-        await _context.SaveChangesAsync()
+        _ = await _context.SaveChangesAsync()
           .ConfigureAwait(false);
       }
       catch (Exception ex)
@@ -128,7 +127,7 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting
         account.MetaRowVersion = existingAccount.MetaRowVersion;
         MappingExpress.CopyProperties(account, existingAccount);
         existingAccount.MetaModifiedTimeCode = DateTime.UtcNow.ToSuperEpochUtc();
-        await _context.SaveChangesAsync()
+        _ = await _context.SaveChangesAsync()
           .ConfigureAwait(false);
       }
       catch (Exception ex)
@@ -140,6 +139,7 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting
 
     private Expression<Func<Account, bool>> CreatePredicate(AccountSelectArgs args)
     {
+      _ = args;
       Expression<Func<Account, bool>> predicate = PredicateBuilder.New<Account>(true);
       predicate = predicate.And(x => !x.MetaIsDeleted);
       return predicate;
