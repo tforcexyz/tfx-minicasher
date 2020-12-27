@@ -32,6 +32,8 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting
       try
       {
         TransactionDTO result = await _context.Set<Transaction>().Where(x => x.TransactionId == args.TransactionId)
+          .Include(x => x.DebitAccount)
+          .Include(x => x.CreditAccount)
           .Select(x => x.ToDTO())
           .FirstOrDefaultAsync()
           .ConfigureAwait(false);
@@ -95,6 +97,8 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting
             TransactionCode = x.TransactionCode,
             TransactionName = x.TransactionName,
             CreditAccountId = x.CreditAccountId,
+            DebitAccountName = x.DebitAccount.AccountName,
+            CreditAccountName = x.CreditAccount.AccountName,
             DebitAccountId = x.DebitAccountId,
             TransactionAmount = x.TransactionAmount,
             IssuedTime = TimeUnit.FromTimeCode(x.IssuedTimeCode)

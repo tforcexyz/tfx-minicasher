@@ -14,11 +14,13 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Models.Views
       Name = dto.TransactionName;
       DebitAccount = new AccountLiteView
       {
-        Id = dto.DebitAccountId
+        Id = dto.DebitAccountId,
+        Name = dto.DebitAccountName,
       };
       CreditAccount = new AccountLiteView
       {
-        Id = dto.CreditAccountId
+        Id = dto.CreditAccountId,
+        Name = dto.CreditAccountName,
       };
       Amount = dto.TransactionAmount;
       IssuedTime = dto.IssuedTime.Time;

@@ -20,6 +20,14 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities
         TransactionAmount = entity.TransactionAmount,
         IssuedTime = TimeUnit.FromTimeCode(entity.IssuedTimeCode)
       };
+      if (entity.DebitAccount != null)
+      {
+        convertedEntity.DebitAccountName = entity.DebitAccount.AccountName;
+      }
+      if (entity.CreditAccount != null)
+      {
+        convertedEntity.CreditAccountName = entity.CreditAccount.AccountName;
+      }
       return convertedEntity;
     }
 

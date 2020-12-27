@@ -13,7 +13,9 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Models.Views
       Code = dto.TransactionCode;
       Name = dto.TransactionName;
       DebitAccountId = dto.DebitAccountId;
+      DebitAccountName = dto.DebitAccountName;
       CreditAccountId = dto.CreditAccountId;
+      CreditAccountName = dto.CreditAccountName;
       Amount = dto.TransactionAmount;
       IssuedTime = dto.IssuedTime.Time;
     }
@@ -26,7 +28,11 @@ namespace Xyz.TForce.MiniCasher.WebApi.Accounting.Models.Views
 
     public Guid DebitAccountId { get; set; }
 
+    public string DebitAccountName { get; set; }
+
     public Guid CreditAccountId { get; set; }
+
+    public string CreditAccountName { get; set; }
 
     public decimal Amount { get; set; }
 

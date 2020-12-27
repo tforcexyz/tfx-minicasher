@@ -15,7 +15,11 @@ namespace Xyz.TForce.MiniCasher.Domain.Accounting.DTOs
 
     public Guid DebitAccountId { get; set; }
 
+    public string DebitAccountName { get; set; }
+
     public Guid CreditAccountId { get; set; }
+
+    public string CreditAccountName { get; set; }
 
     public decimal TransactionAmount { get; set; }
 
