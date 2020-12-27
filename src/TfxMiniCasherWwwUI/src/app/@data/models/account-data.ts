@@ -17,6 +17,11 @@ export class AccountCreateResponse {
   isSuccess: boolean;
 }
 
+export class AccountDeleteResponse {
+  accountId: string;
+  isSuccess: boolean;
+}
+
 export class AccountEditRequest {
   code: string;
   name: string;

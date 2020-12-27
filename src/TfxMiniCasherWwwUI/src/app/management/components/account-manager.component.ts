@@ -8,7 +8,8 @@ import { AccountCreateDialogResult } from './shared/account-create-dialog.compon
 import { AccountDataService } from '../../@data/services';
 import { AccountEditDialogComponent } from './shared/account-edit-dialog.component';
 import { AccountEditDialogResult } from './shared/account-edit-dialog.component';
-import { AccountLite } from '../../@data/models/account';
+import { AccountLite } from '../../@data/models/account'
+import { ConfirmDialogService } from '../../@extend/services/confirm-dialog.service';
 
 @Component({
   selector: 'miana-account-manager',
@@ -21,6 +22,7 @@ export class AccountManagerComponent implements OnInit {
   editDialogRef: NbDialogRef<AccountEditDialogComponent>;
 
   constructor(private accountDataService: AccountDataService,
+    private confirmDialogService: ConfirmDialogService,
     private dialogService: NbDialogService) {
   }
 
@@ -49,6 +51,18 @@ export class AccountManagerComponent implements OnInit {
     this.editDialogRef.onClose.subscribe((result: AccountEditDialogResult) => {
       if(result.refresh) {
         this.searchAccounts();
+      }
+    })
+  }
+
+  onItemDeleteClick(id: string) {
+    this.confirmDialogService.confirm('Are you sure to delete this account?').subscribe(result => {
+      if (result.confirmed) {
+        this.accountDataService.deleteAccount(id).subscribe((response) => {
+          if (response.isSuccess) {
+            this.searchAccounts();
+          }
+        })
       }
     })
   }

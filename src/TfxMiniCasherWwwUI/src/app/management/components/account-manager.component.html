@@ -27,9 +27,9 @@
             <td>{{account.debitOrCredit}}</td>
             <td>0</td>
             <td>
-              <a (click)="onItemEditClick(account.id)" href="javascript:void(0)" title="Edit"><nb-icon icon="edit" pack="far"></nb-icon></a>
+              <a href="javascript:void(0)" title="Edit" (click)="onItemEditClick(account.id)"><nb-icon icon="edit" pack="far"></nb-icon></a>
               &nbsp;
-              <a href="" title="Delete"><nb-icon icon="trash" pack="far"></nb-icon></a>
+              <a href="javascript:void(0)" title="Delete" (click)="onItemDeleteClick(account.id)"><nb-icon icon="trash" pack="far"></nb-icon></a>
             </td>
           </tr>
         </tbody>
