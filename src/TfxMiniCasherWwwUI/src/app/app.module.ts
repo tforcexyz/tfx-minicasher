@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './@ngx-admin/@core/core.module';
 import { ManagementModule } from './management/management.module';
 import { ThemeModule } from './@ngx-admin/@theme/theme.module';
+import { TransactionModule } from './transaction/transaction.module';
 
 @NgModule({
   bootstrap: [
@@ -23,19 +24,20 @@ import { ThemeModule } from './@ngx-admin/@theme/theme.module';
     AppComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    CoreModule.forRoot(),
     HttpClientModule,
+    ManagementModule,
     NbDatepickerModule.forRoot(),
     NbDialogModule.forRoot(),
     NbMenuModule.forRoot(),
     NbSidebarModule.forRoot(),
     NbWindowModule.forRoot(),
     NbToastrModule.forRoot(),
-    CoreModule.forRoot(),
     ThemeModule.forRoot(),
-    AppRoutingModule,
-    ManagementModule,
+    TransactionModule,
   ],
 })
 export class AppModule { }

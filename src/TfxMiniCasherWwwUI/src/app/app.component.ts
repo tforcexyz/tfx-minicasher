@@ -24,7 +24,7 @@ export class AppComponent {
     },
     {
       title: 'Transaction',
-      link: 'transaction/overview',
+      link: 'transaction/general-ledger',
       icon: { icon: 'exchange', pack: 'far' },
     },
     {
