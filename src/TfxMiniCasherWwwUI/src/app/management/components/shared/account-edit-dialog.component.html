@@ -1,6 +1,6 @@
 <nb-card class="dialog-card">
   <nb-card-header>
-    Create account
+    Edit account: {{accountId}}
   </nb-card-header>
   <nb-card-body>
     <form *ngIf="isDataLoaded; else loading" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">

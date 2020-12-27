@@ -4,6 +4,7 @@ export interface Account {
   id: string;
   code: string;
   name: string;
+  description: string;
   parentId: string;
   debitOrCredit: DebitOrCredit,
   isHidden: boolean,

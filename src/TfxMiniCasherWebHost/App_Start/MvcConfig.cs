@@ -23,6 +23,7 @@ namespace Xyz.TForce.MiniCasher
         app.UseCors(options =>
         {
           options.AllowAnyHeader();
+          options.AllowAnyMethod();
           options.AllowAnyOrigin();
         });
           

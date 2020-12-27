@@ -3,17 +3,20 @@ import { FormBuilder } from "@angular/forms";
 import { NbDialogRef } from "@nebular/theme";
 import { OnInit } from "@angular/core";
 
-import { AccountCreateRequest } from '../../../@data/models/account-data';
+import { Account } from '../../../@data/models/account';
 import { AccountDataService } from "../../../@data/services";
+import { AccountEditRequest } from '../../../@data/models/account-data';
 import { AccountHierarchy } from '../../../@data/models/account';
 import { KeyValuePair } from '../../../@extend/models/common';
 
 @Component({
-  selector: 'miana-account-create',
-  templateUrl: './account-create-dialog.component.html',
+  selector: 'miana-account-edit',
+  templateUrl: './account-edit-dialog.component.html',
 })
-export class AccountCreateDialogComponent implements OnInit {
+export class AccountEditDialogComponent implements OnInit {
 
+  account: Account;
+  accountId: string;
   form: any;
   isDataLoaded: boolean;
   parentAccountOptions: KeyValuePair<string, string>[];
@@ -21,7 +24,7 @@ export class AccountCreateDialogComponent implements OnInit {
 
   constructor(private accountDataService: AccountDataService,
     private formBuilder: FormBuilder,
-    protected ref: NbDialogRef<AccountCreateDialogComponent>) {
+    protected ref: NbDialogRef<AccountEditDialogComponent>) {
       this.form = this.formBuilder.group({
         accountType: null,
         code: null,
@@ -35,7 +38,15 @@ export class AccountCreateDialogComponent implements OnInit {
   dismiss() {
     this.ref.close({
       refresh: false,
-    } as AccountCreateDialogResult);
+    } as AccountEditDialogResult);
+  }
+
+  getDetail(accountId: string) {
+    this.accountDataService.getAccount(accountId).subscribe(response =>{
+      this.account = response.account;
+      this.setFormValues(response.account);
+      this.onRemoteDataLoaded();
+    })
   }
 
   initParentAccountOptions() {
@@ -48,20 +59,24 @@ export class AccountCreateDialogComponent implements OnInit {
   ngOnInit(): void {
     this.remoteDataCounter = 0;
     this.initParentAccountOptions();
-    this.setDefaultFormValues();
+    this.getDetail(this.accountId);
   }
 
   onRemoteDataLoaded() {
     this.remoteDataCounter++;
-    if (this.remoteDataCounter >= 1) {
+    if (this.remoteDataCounter >= 2) {
       this.isDataLoaded = true;
     }
   }
 
-  setDefaultFormValues() {
+  setFormValues(account: Account) {
     this.form.patchValue({
-      isHidden: false,
-      parentId: '00000000-0000-0000-0000-000000000000',
+      accountType: account.debitOrCredit,
+      code: account.code,
+      description: account.description,
+      isHidden: account.isHidden,
+      name: account.name,
+      parentId: account.parentId ?? '00000000-0000-0000-0000-000000000000',
     })
   }
 
@@ -70,9 +85,8 @@ export class AccountCreateDialogComponent implements OnInit {
   }
 
   onSubmit(formData) {
-    console.log(formData);
     let parentId: string = formData.parentId == '00000000-0000-0000-0000-000000000000' ? null : formData.parentId;
-    let request: AccountCreateRequest = {
+    let request: AccountEditRequest = {
       code: formData.code,
       debitOrCredit: formData.accountType,
       description: formData.description,
@@ -80,11 +94,11 @@ export class AccountCreateDialogComponent implements OnInit {
       name: formData.name,
       parentId: parentId,
     }
-    this.accountDataService.createAccount(request).subscribe(response => {
+    this.accountDataService.editAccount(this.accountId, request).subscribe(response => {
       if (response.isSuccess) {
         this.ref.close({
           refresh: response.isSuccess,
-        } as AccountCreateDialogResult);
+        } as AccountEditDialogResult);
       }
     })
   }
@@ -105,6 +119,6 @@ export class AccountCreateDialogComponent implements OnInit {
   }
 }
 
-export class AccountCreateDialogResult {
+export class AccountEditDialogResult {
   refresh: boolean;
 }

@@ -11,6 +11,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AccountCreateDialogComponent } from './components/shared/account-create-dialog.component';
+import { AccountEditDialogComponent } from './components/shared/account-edit-dialog.component';
 import { AccountManagerComponent } from './components/account-manager.component';
 import { DataModule } from '../@data/data.module';
 import { ExtendModule } from '../@extend/extend.module';
@@ -20,11 +21,13 @@ import { ManagementRoutingModule } from './management-routing.module';
 @NgModule({
   declarations: [
     AccountCreateDialogComponent,
+    AccountEditDialogComponent,
     AccountManagerComponent,
     ManagementComponent,
   ],
   entryComponents: [
     AccountCreateDialogComponent,
+    AccountEditDialogComponent,
   ],
   imports: [
     CommonModule,

@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 
 import { AccountCreateRequest } from '../models/account-data';
 import { AccountCreateResponse } from '../models/account-data';
+import { AccountEditRequest } from '../models/account-data';
+import { AccountEditResponse } from '../models/account-data';
+import { AccountGetResponse } from '../models/account-data';
 import { AccountGetHierarchyRequest } from '../models/account-data';
 import { AccountGetHierarchyResponse } from '../models/account-data';
 import { AccountSearchResponse } from '../models/account-data';
@@ -11,13 +14,17 @@ import { ServiceHelper } from './data.service';
 
 interface IAccountDataService {
   createAccount(request: AccountCreateRequest): Observable<AccountCreateResponse>;
-  getHierarchy(request: AccountGetHierarchyRequest): Observable<AccountGetHierarchyResponse>;
+  editAccount(accountId: string, request: AccountEditRequest): Observable<AccountEditResponse>;
+  getAccount(accountId: string): Observable<AccountGetResponse>;
+  getAccountHierarchy(request: AccountGetHierarchyRequest): Observable<AccountGetHierarchyResponse>;
   searchAccounts(): Observable<AccountSearchResponse>;
 }
 
 export abstract class AccountDataService implements IAccountDataService {
   abstract createAccount(request: AccountCreateRequest): Observable<AccountCreateResponse>;
-  abstract getHierarchy(request: AccountGetHierarchyRequest): Observable<AccountGetHierarchyResponse>;
+  abstract editAccount(accountId: string, request: AccountEditRequest): Observable<AccountEditResponse>;
+  abstract getAccount(accountId: string): Observable<AccountGetResponse>;
+  abstract getAccountHierarchy(request: AccountGetHierarchyRequest): Observable<AccountGetHierarchyResponse>;
   abstract searchAccounts(): Observable<AccountSearchResponse>;
 }
 
@@ -31,7 +38,15 @@ export class AccountDataServiceImpl extends AccountDataService {
     return ServiceHelper.createObservable(this.http.post<AccountCreateResponse>(ServiceHelper.getUrl('api/accounting/account'), request));
   }
 
-  getHierarchy(request: AccountGetHierarchyRequest): Observable<AccountGetHierarchyResponse> {
+  editAccount(accountId: string, request: AccountEditRequest): Observable<AccountEditResponse> {
+    return ServiceHelper.createObservable(this.http.put<AccountEditResponse>(ServiceHelper.getUrl(`api/accounting/account/${accountId}`), request));
+  }
+
+  getAccount(accountId: string): Observable<AccountGetResponse> {
+    return ServiceHelper.createObservable(this.http.get<AccountGetResponse>(ServiceHelper.getUrl(`api/accounting/account/${accountId}`)));
+  }
+
+  getAccountHierarchy(request: AccountGetHierarchyRequest): Observable<AccountGetHierarchyResponse> {
     return ServiceHelper.createObservable(this.http.get<AccountGetHierarchyResponse>(ServiceHelper.getUrl('api/accounting/account/hierarchy'), request));
   }
 
