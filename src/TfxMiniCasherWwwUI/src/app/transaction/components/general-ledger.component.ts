@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import { NbDialogRef } from '@nebular/theme';
+import { NbDialogService } from '@nebular/theme';
 import { OnInit } from '@angular/core';
 
+import { TransactionCreateDialogComponent } from './shared/transaction-create-dialog.component';
+import { TransactionCreateDialogResult } from './shared/transaction-create-dialog.component';
 import { TransactionDataService } from '../../@data/services';
 import { TransactionLite } from '../../@data/models'
 
@@ -10,13 +14,28 @@ import { TransactionLite } from '../../@data/models'
 })
 export class GeneralLedgerComponent implements OnInit {
 
+  createDialogRef: NbDialogRef<TransactionCreateDialogComponent>;
   transactions: TransactionLite[];
 
-  constructor(private transactionDataService: TransactionDataService) {
+  constructor(private dialogService: NbDialogService,
+    private transactionDataService: TransactionDataService) {
   }
 
   ngOnInit(): void {
     this.searchTransactions();
+  }
+
+  onCreateClick() {
+    this.createDialogRef = this.dialogService.open(TransactionCreateDialogComponent, {
+      closeOnBackdropClick: false,
+      closeOnEsc: true,
+      hasScroll: false,
+    });
+    this.createDialogRef.onClose.subscribe((result: TransactionCreateDialogResult) => {
+      if(result.refresh) {
+        this.searchTransactions();
+      }
+    })
   }
 
   searchTransactions() {
