@@ -19,6 +19,7 @@ export class AccountEditDialogComponent implements OnInit {
   accountId: string;
   form: any;
   isDataLoaded: boolean;
+  isDataSubmitting: boolean;
   parentAccountOptions: KeyValuePair<string, string>[];
   remoteDataCounter: number;
 
@@ -94,12 +95,16 @@ export class AccountEditDialogComponent implements OnInit {
       name: formData.name,
       parentId: parentId,
     }
+    this.isDataSubmitting = true;
     this.accountDataService.editAccount(this.accountId, request).subscribe(response => {
+      this.isDataSubmitting = false;
       if (response.isSuccess) {
         this.ref.close({
           refresh: response.isSuccess,
         } as AccountEditDialogResult);
       }
+    }, error => {
+      this.isDataSubmitting = false;
     })
   }
 

@@ -1,48 +1,39 @@
-<nb-card class="dialog-card">
-  <nb-card-header>
-    Create account
-  </nb-card-header>
-  <nb-card-body>
-    <form *ngIf="isDataLoaded; else loading" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
-      <div class="form-group">
-        <label class="label" for="account_create__code">Account code</label>
-        <input formControlName="code" fullWidth id="account_create__code" name="account_code" nbInput placeholder="" type="text" />
-      </div>
-      <div class="form-group">
-        <label class="label" for="account_create__name">Account name</label>
-        <input formControlName="name" fullWidth id="account_create__name" name="account_name" nbInput placeholder="" type="text" />
-      </div>
-      <div class="form-group">
-        <label class="label" for="account_create__description">Description</label>
-        <textarea formControlName="description" fullWidth id="account_create__description" name="account_name" nbInput placeholder="" type="text"></textarea>
-      </div>
-      <div class="form-group">
-        <div><label class="label">Parent account</label></div>
-        <nb-select formControlName="parentId" fullWidth name="account_parent_account_id">
-          <nb-option value="00000000-0000-0000-0000-000000000000">None</nb-option>
-          <nb-option *ngFor="let option of parentAccountOptions" [value]="option.key">{{option.value}}</nb-option>
-        </nb-select>
-      </div>
-      <div class="form-group">
-        <label class="label">Account type</label>
-        <nb-radio-group formControlName="accountType" inline>
-          <nb-radio [value]="1">Debit account</nb-radio>
-          <nb-radio [value]="-1">Credit account</nb-radio>
-        </nb-radio-group>
-      </div>
-      <div class="form-group">
-        <div><label class="label">Visibility</label></div>
-        <nb-checkbox formControlName="isHidden">This account will be hidden in all screens except Account Manager page.</nb-checkbox>
-      </div>
-    </form>
-  </nb-card-body>
-  <nb-card-footer class="text-right">
+<remote-data-card className="dialog-card" [isLoaded]="isDataLoaded" [isWaiting]="isDataSubmitting" hasFooter="true" title="Create account">
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <div class="form-group">
+      <label class="label" for="account_create__code">Account code</label>
+      <input formControlName="code" fullWidth id="account_create__code" name="account_code" nbInput placeholder="" type="text" />
+    </div>
+    <div class="form-group">
+      <label class="label" for="account_create__name">Account name</label>
+      <input formControlName="name" fullWidth id="account_create__name" name="account_name" nbInput placeholder="" type="text" />
+    </div>
+    <div class="form-group">
+      <label class="label" for="account_create__description">Description</label>
+      <textarea formControlName="description" fullWidth id="account_create__description" name="account_name" nbInput placeholder="" type="text"></textarea>
+    </div>
+    <div class="form-group">
+      <div><label class="label">Parent account</label></div>
+      <nb-select formControlName="parentId" fullWidth name="account_parent_account_id">
+        <nb-option value="00000000-0000-0000-0000-000000000000">None</nb-option>
+        <nb-option *ngFor="let option of parentAccountOptions" [value]="option.key">{{option.value}}</nb-option>
+      </nb-select>
+    </div>
+    <div class="form-group">
+      <label class="label">Account type</label>
+      <nb-radio-group formControlName="accountType" inline>
+        <nb-radio [value]="1">Debit account</nb-radio>
+        <nb-radio [value]="-1">Credit account</nb-radio>
+      </nb-radio-group>
+    </div>
+    <div class="form-group">
+      <div><label class="label">Visibility</label></div>
+      <nb-checkbox formControlName="isHidden">This account will be hidden in all screens except Account Manager page.</nb-checkbox>
+    </div>
+  </form>
+  <ng-container footer>
     <button nbButton status="primary" (click)="submit()">Submit</button>
     &nbsp;
     <button nbButton status="basic" (click)="dismiss()">Cancel</button>
-  </nb-card-footer>
-</nb-card>
-
-<ng-template #loading>
-  Loading data...
-</ng-template>
+  </ng-container>
+</remote-data-card>

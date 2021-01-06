@@ -40,8 +40,13 @@ export class GeneralLedgerComponent implements OnInit {
     })
   }
 
-  searchTransactions() {
+  onRetryClick() {
     this.isLoaded = false;
+    this.isError = false;
+    this.searchTransactions();
+  }
+
+  searchTransactions() {
     this.transactionDataService.searchTransactions().subscribe(response => {
       this.transactions = response.transactions;
       this.isLoaded = true;

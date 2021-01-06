@@ -9,20 +9,12 @@ import { Output } from '@angular/core';
 })
 export class DataLoadingIndicatorComponent {
 
-  @Input()
-  isEmpty: boolean;
+  @Input() isEmpty: boolean;
+  @Input() isError: boolean;
+  @Input() isLoaded: boolean;
+  @Input() useSpinner: boolean;
 
-  @Input()
-  isError: boolean;
-
-  @Input()
-  isLoaded: boolean;
-
-  @Input()
-  useSpinner: boolean;
-
-  @Output()
-  retry: EventEmitter<void> = new EventEmitter<void>();
+  @Output() retry: EventEmitter<void> = new EventEmitter<void>();
 
   onRetryClick() {
     this.retry.emit();

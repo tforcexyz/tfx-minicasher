@@ -9,23 +9,16 @@ import { Output } from '@angular/core';
 })
 export class RemoteDataCardComponent {
 
-  @Input()
-  isEmpty: boolean;
+  @Input() className: string;
+  @Input() isEmpty: boolean;
+  @Input() isError: boolean;
+  @Input() isLoaded: boolean;
+  @Input() isWaiting: boolean;
+  @Input() hasFooter: boolean;
+  @Input() title: string;
+  @Input() useSpinner: boolean;
 
-  @Input()
-  isError: boolean;
-
-  @Input()
-  isLoaded: boolean;
-
-  @Input()
-  title: string;
-
-  @Input()
-  useSpinner: boolean;
-
-  @Output()
-  retry: EventEmitter<void> = new EventEmitter<void>();
+  @Output() retry: EventEmitter<void> = new EventEmitter<void>();
 
   onRetryClick() {
     this.retry.emit();

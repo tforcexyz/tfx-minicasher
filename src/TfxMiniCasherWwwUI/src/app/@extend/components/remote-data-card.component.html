@@ -1,11 +1,15 @@
-<nb-card>
+<nb-card class={{className}}>
   <nb-card-header>
     {{title}}
   </nb-card-header>
-  <nb-card-body [nbSpinner]="!isLoaded" nbSpinnerSize="giant" nbSpinnerStatus="primary">
-    <ng-content *ngIf="isLoaded; else loading">
+  <nb-card-body [nbSpinner]="!isLoaded || isWaiting" nbSpinnerSize="giant" nbSpinnerStatus="primary">
+    <ng-content *ngIf="isLoaded && !isEmpty && !isError; else loading">
     </ng-content>
   </nb-card-body>
+  <nb-card-footer *ngIf="hasFooter" [nbSpinner]="!isLoaded || isWaiting" nbSpinnerSize="tiny" nbSpinnerStatus="primary">
+    <ng-content select="[footer]">
+    </ng-content>
+  </nb-card-footer>
 </nb-card>
 
 <ng-template #loading>

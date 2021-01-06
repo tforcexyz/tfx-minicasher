@@ -16,6 +16,7 @@ export class AccountCreateDialogComponent implements OnInit {
 
   form: any;
   isDataLoaded: boolean;
+  isDataSubmitting: boolean;
   parentAccountOptions: KeyValuePair<string, string>[];
   remoteDataCounter: number;
 
@@ -70,7 +71,6 @@ export class AccountCreateDialogComponent implements OnInit {
   }
 
   onSubmit(formData) {
-    console.log(formData);
     let parentId: string = formData.parentId == '00000000-0000-0000-0000-000000000000' ? null : formData.parentId;
     let request: AccountCreateRequest = {
       code: formData.code,
@@ -80,12 +80,16 @@ export class AccountCreateDialogComponent implements OnInit {
       name: formData.name,
       parentId: parentId,
     }
+    this.isDataSubmitting = true;
     this.accountDataService.createAccount(request).subscribe(response => {
+      this.isDataSubmitting = false;
       if (response.isSuccess) {
         this.ref.close({
           refresh: response.isSuccess,
         } as AccountCreateDialogResult);
       }
+    }, error => {
+      this.isDataSubmitting = false;
     })
   }
 

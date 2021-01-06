@@ -2,7 +2,7 @@
   <button nbButton status="primary" (click)="onCreateClick()"><nb-icon icon="plus" pack="far"></nb-icon>New</button>
 </page-header>
 
-<remote-data-card title="General ledger" [isLoaded]="isLoaded">
+<remote-data-card [isError]="isError" [isLoaded]="isLoaded" (retry)="onRetryClick()" title="General ledger">
   <table class="table table-bordered">
     <thead>
       <tr>

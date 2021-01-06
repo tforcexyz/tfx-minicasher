@@ -24,6 +24,17 @@ nb-card.dialog-card {
   &.modal-xl {
     min-width: $modal-xl;
   }
+
+  nb-card-footer {
+    text-align: right;
+
+    nb-spinner {
+
+      span {
+        visibility: hidden;
+      }
+    }
+  }
 }
 
 nb-radio-group[inline] {

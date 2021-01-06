@@ -8,13 +8,16 @@
   </ng-template>
 </div>
 
-<ng-template #loaded>
-  <ng-template *ngIf="isEmpty">
+<ng-template #empty>
+  <ng-container *ngIf="isEmpty">
     There is no item to display.
-  </ng-template>
-  <ng-template *ngIf="isError">
+  </ng-container>
+</ng-template>
+
+<ng-template #loaded>
+  <ng-container *ngIf="isError; else empty">
     An error has occurred, <a href="javascript:void(0)" (click)="onRetryClick()">click here to retry</a>.
-  </ng-template>
+  </ng-container>
 </ng-template>
 
 <ng-template #text>
