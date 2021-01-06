@@ -15,6 +15,8 @@ import { TransactionLite } from '../../@data/models'
 export class GeneralLedgerComponent implements OnInit {
 
   createDialogRef: NbDialogRef<TransactionCreateDialogComponent>;
+  isError: boolean;
+  isLoaded: boolean;
   transactions: TransactionLite[];
 
   constructor(private dialogService: NbDialogService,
@@ -39,8 +41,13 @@ export class GeneralLedgerComponent implements OnInit {
   }
 
   searchTransactions() {
+    this.isLoaded = false;
     this.transactionDataService.searchTransactions().subscribe(response => {
       this.transactions = response.transactions;
+      this.isLoaded = true;
+    }, error => {
+      this.isLoaded = true;
+      this.isError = true;
     });
   }
 }

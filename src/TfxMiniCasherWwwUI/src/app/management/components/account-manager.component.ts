@@ -20,6 +20,8 @@ export class AccountManagerComponent implements OnInit {
   accounts: AccountLite[];
   createDialogRef: NbDialogRef<AccountCreateDialogComponent>;
   editDialogRef: NbDialogRef<AccountEditDialogComponent>;
+  isError: boolean;
+  isLoaded: boolean;
 
   constructor(private accountDataService: AccountDataService,
     private confirmDialogService: ConfirmDialogService,
@@ -72,8 +74,13 @@ export class AccountManagerComponent implements OnInit {
   }
 
   searchAccounts() {
+    this.isLoaded = false;
     this.accountDataService.searchAccounts().subscribe(response => {
       this.accounts = response.accounts;
+      this.isLoaded = true;
+    }, error => {
+      this.isError = true;
+      this.isLoaded = true;
     });
   }
 }

@@ -1,0 +1,13 @@
+<nb-card>
+  <nb-card-header>
+    {{title}}
+  </nb-card-header>
+  <nb-card-body [nbSpinner]="!isLoaded" nbSpinnerSize="giant" nbSpinnerStatus="primary">
+    <ng-content *ngIf="isLoaded; else loading">
+    </ng-content>
+  </nb-card-body>
+</nb-card>
+
+<ng-template #loading>
+  <data-loading-indicator [isEmpty]="isEmpty" [isError]="isError" [isLoaded]="isLoaded" (retry)="onRetryClick()" [useSpinner]="useSpinner"></data-loading-indicator>
+</ng-template>
