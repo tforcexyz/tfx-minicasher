@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using LinqKit;
 using Microsoft.EntityFrameworkCore;
 using Xyz.TForce.Archetypes.DomainDrivenDevelopment;
+using Xyz.TForce.Data.EntityFrameworkAdapter;
 using Xyz.TForce.DependencyInjection;
 using Xyz.TForce.MiniCasher.Data.Contracts.Accounting;
 using Xyz.TForce.MiniCasher.Data.Contracts.Accounting.Models;
 using Xyz.TForce.MiniCasher.Data.Repositories.Accounting.Entities;
 using Xyz.TForce.MiniCasher.Domain.Accounting.DTOs;
-using Xyz.TForce.Reflection;
 
 namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting
 {
@@ -128,7 +128,7 @@ namespace Xyz.TForce.MiniCasher.Data.Repositories.Accounting
         newEntity.MetaCreatedTimeCode = existingEntity.MetaCreatedTimeCode;
         newEntity.MetaIsDeleted = existingEntity.MetaIsDeleted;
         newEntity.MetaRowVersion = existingEntity.MetaRowVersion;
-        MappingExpress.CopyProperties(newEntity, existingEntity);
+        EntitiesExpress.CopyProperties(newEntity, existingEntity);
         existingEntity.MetaModifiedTimeCode = DateTime.UtcNow.ToSuperEpochUtc();
         await _context.SaveChangesAsync()
           .ConfigureAwait(false);
