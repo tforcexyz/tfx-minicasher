@@ -1,0 +1,32 @@
+<page-header heading="Account manager">
+  <button (click)="onCreateClick()" nbButton status="primary"><nb-icon icon="plus" pack="far"></nb-icon>New</button>
+</page-header>
+
+<remote-data-card [isError]="isError" [isLoaded]="isLoaded" (retry)="onRetryClick()" title="Accounts">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Account ID</th>
+        <th>Account code</th>
+        <th>Account name</th>
+        <th>Debit or Credit</th>
+        <th>Current balance</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let account of accounts">
+        <td>{{account.id}}</td>
+        <td>{{account.code}}</td>
+        <td>{{account.name}}</td>
+        <td>{{account.debitOrCredit}}</td>
+        <td>0</td>
+        <td>
+          <a (click)="onItemEditClick(account.id)" href="javascript:void(0)" title="Edit"><nb-icon icon="edit" pack="far"></nb-icon></a>
+          &nbsp;
+          <a (click)="onItemDeleteClick(account.id)" href="javascript:void(0)" title="Delete"><nb-icon icon="trash" pack="far"></nb-icon></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</remote-data-card>

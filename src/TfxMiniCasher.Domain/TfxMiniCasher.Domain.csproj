@@ -13,4 +13,8 @@
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TfxArchetypes.DomainDrivenDevelopment\TfxArchetypes.DomainDrivenDevelopment.csproj" />
+  </ItemGroup>
+
 </Project>

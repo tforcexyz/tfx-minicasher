@@ -1,0 +1,18 @@
+nb-card-header {
+  display: flex;
+
+  div {
+    display: flex;
+    width: 50%;
+  }
+
+  .left_column {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .right_column {
+    justify-content: flex-end;
+    text-align: right;
+  }
+}

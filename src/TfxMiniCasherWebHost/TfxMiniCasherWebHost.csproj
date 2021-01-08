@@ -22,8 +22,20 @@
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
     <PackageReference Include="TfxDependencyInjection" Version="1.0.0" />
     <PackageReference Include="TfxDependencyInjection.AutofacAdapter" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="App_Start\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TfxMiniCasher.Application.Logic\TfxMiniCasher.Application.Logic.csproj" />
+    <ProjectReference Include="..\TfxMiniCasher.Data.Repositories\TfxMiniCasher.Data.Repositories.csproj" />
+    <ProjectReference Include="..\TfxMiniCasher.WebApi\TfxMiniCasher.WebApi.csproj" />
+    <ProjectReference Include="..\TfxMiniCasher.WebMvc\TfxMiniCasher.WebMvc.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,35 @@
+<remote-data-card className="dialog-card" [isLoaded]="isDataLoaded" [isWaiting]="isDataSubmitting" hasFooter="true" title="Edit transaction: {{transactionId}}">
+  <form [formGroup]="form" (ngSubmit)="onFormSubmit(form.value)">
+    <div class="form-group">
+      <label class="label" for="transaction_create__name">Transaction name</label>
+      <input formControlName="name" fullWidth id="transaction_create__name" name="transaction_name" nbInput placeholder="" type="text" />
+      <reactive-validation-message [form]="form" controlName="name" propertyName="Transaction name"></reactive-validation-message>
+    </div>
+    <div class="form-group">
+      <label class="label" for="transaction_create__amount">Transaction amount</label>
+      <input formControlName="amount" fullWidth id="transaction_create__amount" name="transaction_amount" nbInput placeholder="" type="number" />
+      <reactive-validation-message [form]="form" controlName="amount" propertyName="Transaction amount"></reactive-validation-message>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-6">
+        <div><label class="label">Debit account</label></div>
+        <nb-select formControlName="debitAccountId" fullWidth id="transaction_create__debit_account_id" name="transaction_debit_account_id">
+          <nb-option *ngFor="let option of debitAccountOptions" [value]="option.key">{{option.value}}</nb-option>
+        </nb-select>
+        <reactive-validation-message [form]="form" controlName="debitAccountId" propertyName="Debit account"></reactive-validation-message>
+      </div>
+      <div class="col-md-6">
+        <div><label class="label">Credit account</label></div>
+        <nb-select formControlName="creditAccountId" fullWidth id="transaction_create__credit_account_id" name="transaction_credit_account_id">
+          <nb-option *ngFor="let option of creditAccountOptions" [value]="option.key">{{option.value}}</nb-option>
+        </nb-select>
+        <reactive-validation-message [form]="form" controlName="creditAccountId" propertyName="Credit account"></reactive-validation-message>
+      </div>
+    </div>
+  </form>
+  <ng-container footer>
+    <button (click)="onSubmitClick()" [disabled]="!isDataLoaded || isDataSubmitting" nbButton status="primary">Submit</button>
+    &nbsp;
+    <button (click)="onCancelClick()" nbButton status="basic">Cancel</button>
+  </ng-container>
+</remote-data-card>

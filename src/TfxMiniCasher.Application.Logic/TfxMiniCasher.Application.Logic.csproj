@@ -13,4 +13,13 @@
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="TfxDependencyInjection" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TfxMiniCasher.Application.Contracts\TfxMiniCasher.Application.Contracts.csproj" />
+    <ProjectReference Include="..\TfxMiniCasher.Data.Contracts\TfxMiniCasher.Data.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>

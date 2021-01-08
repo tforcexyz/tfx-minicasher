@@ -1,0 +1,13 @@
+<nb-card accent="danger" class="dialog-card">
+  <nb-card-header>
+    {{title}}
+  </nb-card-header>
+  <nb-card-body>
+    {{message}}
+  </nb-card-body>
+  <nb-card-footer class="text-right">
+    <button nbButton status="primary" (click)="onConfirm()">{{okLabel}}</button>
+    &nbsp;
+    <button nbButton status="basic" (click)="onDismiss()">{{cancelLabel}}</button>
+  </nb-card-footer>
+</nb-card>

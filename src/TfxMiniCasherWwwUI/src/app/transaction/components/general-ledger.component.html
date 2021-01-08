@@ -1,0 +1,36 @@
+<page-header heading="General ledger">
+  <button (click)="onCreateClick()" nbButton status="primary"><nb-icon icon="plus" pack="far"></nb-icon>New</button>
+</page-header>
+
+<remote-data-card [isError]="isError" [isLoaded]="isLoaded" (retry)="onRetryClick()" title="General ledger">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Transaction ID</th>
+        <th>Transaction code</th>
+        <th>Transaction name</th>
+        <th>Debit account</th>
+        <th>Credit account</th>
+        <th>Amount</th>
+        <th>Issud time</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{transaction.id}}</td>
+        <td>{{transaction.code}}</td>
+        <td>{{transaction.name}}</td>
+        <td>{{transaction.debitAccountName}}</td>
+        <td>{{transaction.creditAccountName}}</td>
+        <td>{{transaction.amount.toFixed(2)}}</td>
+        <td>{{transaction.issuedTime}}</td>
+        <td>
+          <a (click)="onItemEditClick(transaction.id)" href="javascript:void(0)" title="Edit"><nb-icon icon="edit" pack="far"></nb-icon></a>
+          &nbsp;
+          <a (click)="onItemDeleteClick(transaction.id)" href="javascript:void(0)" title="Delete"><nb-icon icon="trash" pack="far"></nb-icon></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</remote-data-card>

@@ -27,11 +27,15 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
+    <PackageReference Include="FluentValidation" Version="8.6.3" />
     <PackageReference Include="MediatR" Version="5.1.0" />
+    <PackageReference Include="Tfx" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="FluentValidation" Version="9.3.0" />
     <PackageReference Include="MediatR" Version="8.1.0" />
+    <PackageReference Include="Tfx" Version="1.0.0" />
   </ItemGroup>
   
 </Project>
