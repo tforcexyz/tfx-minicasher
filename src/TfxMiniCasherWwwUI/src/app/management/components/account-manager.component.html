@@ -1,8 +1,8 @@
 <page-header heading="Account manager">
-  <button href="management/account/create" nbButton status="primary" (click)="onCreateClick()"><nb-icon icon="plus" pack="far"></nb-icon>New</button>
+  <button (click)="onCreateClick()" nbButton status="primary"><nb-icon icon="plus" pack="far"></nb-icon>New</button>
 </page-header>
 
-<remote-data-card [isLoaded]="isLoaded" title="Accounts">
+<remote-data-card [isError]="isError" [isLoaded]="isLoaded" (retry)="onRetryClick()" title="Accounts">
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -22,9 +22,9 @@
         <td>{{account.debitOrCredit}}</td>
         <td>0</td>
         <td>
-          <a href="javascript:void(0)" title="Edit" (click)="onItemEditClick(account.id)"><nb-icon icon="edit" pack="far"></nb-icon></a>
+          <a (click)="onItemEditClick(account.id)" href="javascript:void(0)" title="Edit"><nb-icon icon="edit" pack="far"></nb-icon></a>
           &nbsp;
-          <a href="javascript:void(0)" title="Delete" (click)="onItemDeleteClick(account.id)"><nb-icon icon="trash" pack="far"></nb-icon></a>
+          <a (click)="onItemDeleteClick(account.id)" href="javascript:void(0)" title="Delete"><nb-icon icon="trash" pack="far"></nb-icon></a>
         </td>
       </tr>
     </tbody>

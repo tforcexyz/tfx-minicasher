@@ -36,12 +36,6 @@ export class AccountEditDialogComponent implements OnInit {
       })
   }
 
-  dismiss() {
-    this.ref.close({
-      refresh: false,
-    } as AccountEditDialogResult);
-  }
-
   getDetail(accountId: string) {
     this.accountDataService.getAccount(accountId).subscribe(response =>{
       this.account = response.account;
@@ -57,35 +51,13 @@ export class AccountEditDialogComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-    this.remoteDataCounter = 0;
-    this.initParentAccountOptions();
-    this.getDetail(this.accountId);
+  onCancelClick() {
+    this.ref.close({
+      refresh: false,
+    } as AccountEditDialogResult);
   }
 
-  onRemoteDataLoaded() {
-    this.remoteDataCounter++;
-    if (this.remoteDataCounter >= 2) {
-      this.isDataLoaded = true;
-    }
-  }
-
-  setFormValues(account: Account) {
-    this.form.patchValue({
-      accountType: account.debitOrCredit,
-      code: account.code,
-      description: account.description,
-      isHidden: account.isHidden,
-      name: account.name,
-      parentId: account.parentId ?? '00000000-0000-0000-0000-000000000000',
-    })
-  }
-
-  submit() {
-    this.onSubmit(this.form.value);
-  }
-
-  onSubmit(formData) {
+  onFormSubmit(formData) {
     let parentId: string = formData.parentId == '00000000-0000-0000-0000-000000000000' ? null : formData.parentId;
     let request: AccountEditRequest = {
       code: formData.code,
@@ -105,6 +77,34 @@ export class AccountEditDialogComponent implements OnInit {
       }
     }, error => {
       this.isDataSubmitting = false;
+    })
+  }
+
+  ngOnInit(): void {
+    this.remoteDataCounter = 0;
+    this.initParentAccountOptions();
+    this.getDetail(this.accountId);
+  }
+
+  onRemoteDataLoaded() {
+    this.remoteDataCounter++;
+    if (this.remoteDataCounter >= 2) {
+      this.isDataLoaded = true;
+    }
+  }
+
+  onSubmitClick() {
+    this.onFormSubmit(this.form.value);
+  }
+
+  setFormValues(account: Account) {
+    this.form.patchValue({
+      accountType: account.debitOrCredit,
+      code: account.code,
+      description: account.description,
+      isHidden: account.isHidden,
+      name: account.name,
+      parentId: account.parentId ?? '00000000-0000-0000-0000-000000000000',
     })
   }
 

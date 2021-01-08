@@ -1,5 +1,5 @@
-<remote-data-card className="dialog-card" hasFooter="true" [isLoaded]="isDataLoaded" [isWaiting]="isDataSubmitting" title="Edit account: {{accountId}}">
-  <form *ngIf="isDataLoaded; else loading" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+<remote-data-card className="dialog-card" [isLoaded]="isDataLoaded" [isWaiting]="isDataSubmitting" hasFooter="true" title="Edit account: {{accountId}}">
+  <form [formGroup]="form" (ngSubmit)="onFormSubmit(form.value)">
     <div class="form-group">
       <label class="label" for="account_create__code">Account code</label>
       <input formControlName="code" fullWidth id="account_create__code" name="account_code" nbInput placeholder="" type="text" />
@@ -32,8 +32,8 @@
     </div>
   </form>
   <ng-container footer>
-    <button nbButton status="primary" (click)="submit()">Submit</button>
+    <button (click)="onSubmitClick()" [disabled]="!isDataLoaded || isDataSubmitting" nbButton status="primary">Submit</button>
     &nbsp;
-    <button nbButton status="basic" (click)="dismiss()">Cancel</button>
+    <button (click)="onCancelClick()" nbButton status="basic">Cancel</button>
   </ng-container>
 </remote-data-card>

@@ -20,6 +20,7 @@ export class TransactionCreateDialogComponent implements OnInit {
   debitAccountOptions: KeyValuePair<string, string>[];
   form: any;
   isDataLoaded: boolean;
+  isDataSubmitting: boolean;
   remoteDataCounter: number;
 
   constructor(private accountDataService: AccountDataService,
@@ -49,7 +50,7 @@ export class TransactionCreateDialogComponent implements OnInit {
     this.setDefaultFormValues();
   }
 
-  onDismissClick() {
+  onCancelClick() {
     this.ref.close({
       refresh: false,
     } as TransactionCreateDialogResult);
@@ -63,12 +64,16 @@ export class TransactionCreateDialogComponent implements OnInit {
       issuedTime: formData.issuedTime,
       name: formData.name,
     }
+    this.isDataSubmitting = true;
     this.transactionDataService.createTransaction(request).subscribe(response => {
+      this.isDataSubmitting = false;
       if (response.isSuccess) {
         this.ref.close({
           refresh: response.isSuccess,
         } as TransactionCreateDialogResult);
       }
+    }, error => {
+      this.isDataSubmitting = false;
     })
   }
 

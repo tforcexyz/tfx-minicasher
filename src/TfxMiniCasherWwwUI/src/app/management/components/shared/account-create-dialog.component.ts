@@ -33,12 +33,6 @@ export class AccountCreateDialogComponent implements OnInit {
       })
   }
 
-  dismiss() {
-    this.ref.close({
-      refresh: false,
-    } as AccountCreateDialogResult);
-  }
-
   initParentAccountOptions() {
     this.accountDataService.getAccountHierarchy({}).subscribe(response => {
       this.parentAccountOptions = this.createParentAccountOptions(response.accounts, 0);
@@ -46,31 +40,13 @@ export class AccountCreateDialogComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-    this.remoteDataCounter = 0;
-    this.initParentAccountOptions();
-    this.setDefaultFormValues();
+  onCancelClick() {
+    this.ref.close({
+      refresh: false,
+    } as AccountCreateDialogResult);
   }
 
-  onRemoteDataLoaded() {
-    this.remoteDataCounter++;
-    if (this.remoteDataCounter >= 1) {
-      this.isDataLoaded = true;
-    }
-  }
-
-  setDefaultFormValues() {
-    this.form.patchValue({
-      isHidden: false,
-      parentId: '00000000-0000-0000-0000-000000000000',
-    })
-  }
-
-  submit() {
-    this.onSubmit(this.form.value);
-  }
-
-  onSubmit(formData) {
+  onFormSubmit(formData) {
     let parentId: string = formData.parentId == '00000000-0000-0000-0000-000000000000' ? null : formData.parentId;
     let request: AccountCreateRequest = {
       code: formData.code,
@@ -90,6 +66,30 @@ export class AccountCreateDialogComponent implements OnInit {
       }
     }, error => {
       this.isDataSubmitting = false;
+    })
+  }
+
+  onSubmitClick() {
+    this.onFormSubmit(this.form.value);
+  }
+
+  ngOnInit(): void {
+    this.remoteDataCounter = 0;
+    this.initParentAccountOptions();
+    this.setDefaultFormValues();
+  }
+
+  onRemoteDataLoaded() {
+    this.remoteDataCounter++;
+    if (this.remoteDataCounter >= 1) {
+      this.isDataLoaded = true;
+    }
+  }
+
+  setDefaultFormValues() {
+    this.form.patchValue({
+      isHidden: false,
+      parentId: '00000000-0000-0000-0000-000000000000',
     })
   }
 

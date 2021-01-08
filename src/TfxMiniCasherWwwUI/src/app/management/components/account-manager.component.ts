@@ -69,6 +69,12 @@ export class AccountManagerComponent implements OnInit {
     })
   }
 
+  onRetryClick() {
+    this.isLoaded = false;
+    this.isError = false;
+    this.searchAccounts();
+  }
+
   ngOnInit(): void {
     this.searchAccounts();
   }
