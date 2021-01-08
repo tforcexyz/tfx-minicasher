@@ -1,7 +1,10 @@
 import { Component } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
+import { FormControl } from "@angular/forms";
+import { FormGroup } from "@angular/forms";
 import { NbDialogRef } from "@nebular/theme";
 import { OnInit } from "@angular/core";
+import { Validators } from "@angular/forms";
 
 import { AccountCreateRequest } from '../../../@data/models/account-data';
 import { AccountDataService } from "../../../@data/services";
@@ -14,7 +17,7 @@ import { KeyValuePair } from '../../../@extend/models/common';
 })
 export class AccountCreateDialogComponent implements OnInit {
 
-  form: any;
+  form: FormGroup;
   isDataLoaded: boolean;
   isDataSubmitting: boolean;
   parentAccountOptions: KeyValuePair<string, string>[];
@@ -24,12 +27,12 @@ export class AccountCreateDialogComponent implements OnInit {
     private formBuilder: FormBuilder,
     protected ref: NbDialogRef<AccountCreateDialogComponent>) {
       this.form = this.formBuilder.group({
-        accountType: null,
-        code: null,
-        description: null,
-        isHidden: null,
-        name: null,
-        parentId: null,
+        accountType: new FormControl(null, Validators.required),
+        code: new FormControl(null, Validators.required),
+        description: new FormControl(null),
+        isHidden: new FormControl(false),
+        name: new FormControl(null, Validators.required),
+        parentId: new FormControl('00000000-0000-0000-0000-000000000000', Validators.required),
       })
   }
 
@@ -70,13 +73,16 @@ export class AccountCreateDialogComponent implements OnInit {
   }
 
   onSubmitClick() {
+    this.form.markAllAsTouched();
+    if (this.form.invalid) {
+      return;
+    }
     this.onFormSubmit(this.form.value);
   }
 
   ngOnInit(): void {
     this.remoteDataCounter = 0;
     this.initParentAccountOptions();
-    this.setDefaultFormValues();
   }
 
   onRemoteDataLoaded() {
@@ -84,13 +90,6 @@ export class AccountCreateDialogComponent implements OnInit {
     if (this.remoteDataCounter >= 1) {
       this.isDataLoaded = true;
     }
-  }
-
-  setDefaultFormValues() {
-    this.form.patchValue({
-      isHidden: false,
-      parentId: '00000000-0000-0000-0000-000000000000',
-    })
   }
 
   private createParentAccountOptions(accountHierarchies: AccountHierarchy[], level: number): KeyValuePair<string, string>[] {

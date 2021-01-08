@@ -1,7 +1,10 @@
-import { Component } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
-import { NbDialogRef } from "@nebular/theme";
-import { OnInit } from "@angular/core";
+import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { NbDialogRef } from '@nebular/theme';
+import { OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
 
 import { Account } from '../../../@data/models/account';
 import { AccountDataService } from "../../../@data/services";
@@ -17,7 +20,7 @@ export class AccountEditDialogComponent implements OnInit {
 
   account: Account;
   accountId: string;
-  form: any;
+  form: FormGroup;
   isDataLoaded: boolean;
   isDataSubmitting: boolean;
   parentAccountOptions: KeyValuePair<string, string>[];
@@ -27,12 +30,12 @@ export class AccountEditDialogComponent implements OnInit {
     private formBuilder: FormBuilder,
     protected ref: NbDialogRef<AccountEditDialogComponent>) {
       this.form = this.formBuilder.group({
-        accountType: null,
-        code: null,
-        description: null,
-        isHidden: null,
-        name: null,
-        parentId: null,
+        accountType: new FormControl(null, Validators.required),
+        code: new FormControl(null, Validators.required),
+        description: new FormControl(null),
+        isHidden: new FormControl(false),
+        name: new FormControl(null, Validators.required),
+        parentId: new FormControl('00000000-0000-0000-0000-000000000000', Validators.required),
       })
   }
 
@@ -94,6 +97,10 @@ export class AccountEditDialogComponent implements OnInit {
   }
 
   onSubmitClick() {
+    this.form.markAllAsTouched();
+    if (this.form.invalid) {
+      return;
+    }
     this.onFormSubmit(this.form.value);
   }
 

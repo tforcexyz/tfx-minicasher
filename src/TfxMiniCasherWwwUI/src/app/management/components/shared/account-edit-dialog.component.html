@@ -3,10 +3,12 @@
     <div class="form-group">
       <label class="label" for="account_create__code">Account code</label>
       <input formControlName="code" fullWidth id="account_create__code" name="account_code" nbInput placeholder="" type="text" />
+      <reactive-validation-message [form]="form" controlName="code" propertyName="Account code"></reactive-validation-message>
     </div>
     <div class="form-group">
       <label class="label" for="account_create__name">Account name</label>
       <input formControlName="name" fullWidth id="account_create__name" name="account_name" nbInput placeholder="" type="text" />
+      <reactive-validation-message [form]="form" controlName="name" propertyName="Account name"></reactive-validation-message>
     </div>
     <div class="form-group">
       <label class="label" for="account_create__description">Description</label>
@@ -18,6 +20,7 @@
         <nb-option value="00000000-0000-0000-0000-000000000000">None</nb-option>
         <nb-option *ngFor="let option of parentAccountOptions" [value]="option.key">{{option.value}}</nb-option>
       </nb-select>
+      <reactive-validation-message [form]="form" controlName="parentId" propertyName="Parent account"></reactive-validation-message>
     </div>
     <div class="form-group">
       <label class="label">Account type</label>
@@ -25,6 +28,7 @@
         <nb-radio [value]="1">Debit account</nb-radio>
         <nb-radio [value]="-1">Credit account</nb-radio>
       </nb-radio-group>
+      <reactive-validation-message [form]="form" controlName="accountType" propertyName="Account type"></reactive-validation-message>
     </div>
     <div class="form-group">
       <div><label class="label">Visibility</label></div>

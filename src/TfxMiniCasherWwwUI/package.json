@@ -2,11 +2,11 @@
   "name": "tfx-minicasher",
   "version": "1.0.0",
   "scripts": {
-    "start": "cross-env NODE_ENV=development npm run build:assets && npm run serve",
+    "start": "cross-env NODE_ENV=development npm run build:assets && npm run dev",
     "build": "cross-env NODE_ENV=production npm run build:assets && npm run build:release",
     "build:assets": "gulp build",
     "build:release": "webpack --config ./webpack.config.prod.js",
-    "serve": "webpack-dev-server --config ./webpack.config.dev.js"
+    "dev": "webpack-dev-server --config ./webpack.config.dev.js"
   },
   "private": true,
   "dependencies": {

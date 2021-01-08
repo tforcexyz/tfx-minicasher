@@ -7,6 +7,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog.component';
 import { ConfirmDialogService } from './services/confirm-dialog.service';
 import { DataLoadingIndicatorComponent } from './components/data-loading-indicator.component';
 import { PageHeaderComponent } from './components/page-header.component';
+import { ReactiveValidationMessage } from './components/reactive-validation-message.component';
 import { RemoteDataCardComponent } from './components/remote-data-card.component';
 import { ThemeModule } from '../@ngx-admin/@theme/theme.module';
 
@@ -15,6 +16,7 @@ import { ThemeModule } from '../@ngx-admin/@theme/theme.module';
     DataLoadingIndicatorComponent,
     ConfirmDialogComponent,
     PageHeaderComponent,
+    ReactiveValidationMessage,
     RemoteDataCardComponent,
   ],
   entryComponents: [
@@ -23,6 +25,7 @@ import { ThemeModule } from '../@ngx-admin/@theme/theme.module';
   exports: [
     DataLoadingIndicatorComponent,
     PageHeaderComponent,
+    ReactiveValidationMessage,
     RemoteDataCardComponent,
   ],
   imports: [

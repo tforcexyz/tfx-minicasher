@@ -51,3 +51,8 @@ nb-radio-group[inline] {
     font-size: 1.25rem;
   }
 }
+
+.ng-invalid {
+  color: $danger;
+  font-size: 0.8em;
+}

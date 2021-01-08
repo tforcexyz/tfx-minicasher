@@ -1,0 +1,9 @@
+<ng-container *ngIf="control.invalid && (control.dirty || control.touched)">
+  <span *ngIf="control.errors.email" class="ng-invalid">{{propertyName || controlName}} is not a valid email.</span>
+  <span *ngIf="control.errors.min" class="ng-invalid">{{propertyName || controlName}} must be greater or equal than {{control.errors.min.min}}.</span>
+  <span *ngIf="control.errors.minLength" class="ng-invalid">{{propertyName || controlName}} must have at least {{control.errors.minLength.requiredLength}} characters.</span>
+  <span *ngIf="control.errors.max" class="ng-invalid">{{propertyName || controlName}} must be less or equal than {{control.errors.max.max}}.</span>
+  <span *ngIf="control.errors.maxLength" class="ng-invalid">{{propertyName || controlName}} must have at most {{control.errors.maxLength.requiredLength}} characters.</span>
+  <span *ngIf="control.errors.pattern" class="ng-invalid">{{propertyName || controlName}} has invalid value.</span>
+  <span *ngIf="control.errors.required" class="ng-invalid">{{propertyName || controlName}} is required.</span>
+</ng-container>
