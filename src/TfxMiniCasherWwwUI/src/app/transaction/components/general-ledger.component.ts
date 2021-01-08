@@ -6,6 +6,8 @@ import { OnInit } from '@angular/core';
 import { TransactionCreateDialogComponent } from './shared/transaction-create-dialog.component';
 import { TransactionCreateDialogResult } from './shared/transaction-create-dialog.component';
 import { TransactionDataService } from '../../@data/services';
+import { TransactionEditDialogComponent } from './shared/transaction-edit-dialog.component';
+import { TransactionEditDialogResult } from './shared/transaction-edit-dialog.component';
 import { TransactionLite } from '../../@data/models'
 
 @Component({
@@ -15,6 +17,7 @@ import { TransactionLite } from '../../@data/models'
 export class GeneralLedgerComponent implements OnInit {
 
   createDialogRef: NbDialogRef<TransactionCreateDialogComponent>;
+  editDialogRef: NbDialogRef<TransactionEditDialogComponent>;
   isError: boolean;
   isLoaded: boolean;
   transactions: TransactionLite[];
@@ -34,6 +37,22 @@ export class GeneralLedgerComponent implements OnInit {
       hasScroll: false,
     });
     this.createDialogRef.onClose.subscribe((result: TransactionCreateDialogResult) => {
+      if(result.refresh) {
+        this.searchTransactions();
+      }
+    })
+  }
+
+  onItemEditClick(id: string) {
+    this.editDialogRef = this.dialogService.open(TransactionEditDialogComponent, {
+      closeOnBackdropClick: false,
+      closeOnEsc: true,
+      context: {
+        transactionId: id,
+      },
+      hasScroll: false,
+    });
+    this.editDialogRef.onClose.subscribe((result: TransactionEditDialogResult) => {
       if(result.refresh) {
         this.searchTransactions();
       }

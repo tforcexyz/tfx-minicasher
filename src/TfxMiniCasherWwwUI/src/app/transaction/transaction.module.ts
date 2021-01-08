@@ -12,6 +12,7 @@ import { ExtendModule } from '../@extend/extend.module';
 import { GeneralLedgerComponent } from './components/general-ledger.component';
 import { TransactionComponent } from './transaction.component';
 import { TransactionCreateDialogComponent } from './components/shared/transaction-create-dialog.component';
+import { TransactionEditDialogComponent } from './components/shared/transaction-edit-dialog.component';
 import { TransactionRoutingModule } from './transaction-routing.module';
 
 @NgModule({
@@ -19,9 +20,11 @@ import { TransactionRoutingModule } from './transaction-routing.module';
     GeneralLedgerComponent,
     TransactionComponent,
     TransactionCreateDialogComponent,
+    TransactionEditDialogComponent,
   ],
   entryComponents: [
     TransactionCreateDialogComponent,
+    TransactionEditDialogComponent,
   ],
   imports: [
     CommonModule,

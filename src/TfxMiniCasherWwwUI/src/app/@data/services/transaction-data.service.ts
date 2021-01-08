@@ -5,15 +5,22 @@ import { Observable } from 'rxjs';
 import { ServiceHelper } from './data.service';
 import { TransactionCreateRequest } from '../models/transaction-data';
 import { TransactionCreateResponse } from '../models/transaction-data';
+import { TransactionEditRequest } from '../models/transaction-data';
+import { TransactionEditResponse } from '../models/transaction-data';
+import { TransactionGetResponse } from '../models/transaction-data';
 import { TransactionSearchResponse } from '../models/transaction-data';
 
 interface ITransactionDataService {
   createTransaction(request: TransactionCreateRequest): Observable<TransactionCreateResponse>;
+  editTransaction(transactionId: string, request: TransactionEditRequest) : Observable<TransactionEditResponse>;
+  getTransaction(transactionId: string): Observable<TransactionGetResponse>;
   searchTransactions(): Observable<TransactionSearchResponse>;
 }
 
 export abstract class TransactionDataService implements ITransactionDataService {
   abstract createTransaction(request: TransactionCreateRequest): Observable<TransactionCreateResponse>;
+  abstract editTransaction(transactionId: string, request: TransactionEditRequest) : Observable<TransactionEditResponse>;
+  abstract getTransaction(transactionId: string): Observable<TransactionGetResponse>;
   abstract searchTransactions(): Observable<TransactionSearchResponse>;
 }
 
@@ -25,6 +32,14 @@ export class TransactionDataServiceImpl extends TransactionDataService {
 
   createTransaction(request: TransactionCreateRequest): Observable<TransactionCreateResponse> {
     return ServiceHelper.createObservable(this.http.post<TransactionCreateResponse>(ServiceHelper.getUrl('api/accounting/transaction'), request));
+  }
+
+  editTransaction(transactionId: string, request: TransactionEditRequest) : Observable<TransactionEditResponse> {
+    return ServiceHelper.createObservable(this.http.put<TransactionEditResponse>(ServiceHelper.getUrl(`api/accounting/transaction/${transactionId}`), request));
+  }
+
+  getTransaction(transactionId: string): Observable<TransactionGetResponse> {
+    return ServiceHelper.createObservable(this.http.get<TransactionGetResponse>(ServiceHelper.getUrl(`api/accounting/transaction/${transactionId}`)));
   }
 
   searchTransactions(): Observable<TransactionSearchResponse> {

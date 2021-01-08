@@ -13,5 +13,8 @@ export { AccountLite } from './models/account';
 export { Transaction } from './models/transaction';
 export { TransactionCreateRequest } from './models/transaction-data';
 export { TransactionCreateResponse } from './models/transaction-data';
+export { TransactionEditRequest } from './models/transaction-data';
+export { TransactionEditResponse } from './models/transaction-data';
+export { TransactionGetResponse } from './models/transaction-data';
 export { TransactionLite } from './models/transaction';
 export { TransactionSearchResponse } from './models/transaction-data';

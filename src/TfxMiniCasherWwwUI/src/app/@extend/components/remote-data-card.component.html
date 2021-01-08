@@ -6,7 +6,7 @@
     <ng-content *ngIf="isLoaded && !isEmpty && !isError; else loading">
     </ng-content>
   </nb-card-body>
-  <nb-card-footer *ngIf="hasFooter" [nbSpinner]="!isLoaded || isWaiting" nbSpinnerSize="tiny" nbSpinnerStatus="primary">
+  <nb-card-footer *ngIf="hasFooter">
     <ng-content select="[footer]">
     </ng-content>
   </nb-card-footer>
