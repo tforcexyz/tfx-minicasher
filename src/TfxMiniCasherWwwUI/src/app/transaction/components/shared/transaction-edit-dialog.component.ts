@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { NbDialogRef } from '@nebular/theme';
 import { OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
 
 import { AccountDataService } from "../../../@data/services";
 import { AccountHierarchy } from '../../../@data/models';
@@ -19,7 +22,7 @@ export class TransactionEditDialogComponent implements OnInit {
 
   creditAccountOptions: KeyValuePair<string, string>[];
   debitAccountOptions: KeyValuePair<string, string>[];
-  form: any;
+  form: FormGroup;
   isDataLoaded: boolean;
   isDataSubmitting: boolean;
   remoteDataCounter: number;
@@ -31,11 +34,11 @@ export class TransactionEditDialogComponent implements OnInit {
     protected ref: NbDialogRef<TransactionEditDialogComponent>,
     private transactionDataService: TransactionDataService) {
       this.form = this.formBuilder.group({
-        amount: null,
-        creditAccountId: null,
-        debitAccountId: null,
-        issuedTime: null,
-        name: null,
+        amount: new FormControl(0, [Validators.required, Validators.min(0)]),
+        creditAccountId: new FormControl(null, Validators.required),
+        debitAccountId: new FormControl(null, Validators.required),
+        issuedTime: new FormControl(new Date(), Validators.required),
+        name: new FormControl(null, Validators.required),
       })
   }
 
@@ -58,7 +61,6 @@ export class TransactionEditDialogComponent implements OnInit {
   ngOnInit(): void {
     this.remoteDataCounter = 0;
     this.initParentAccountOptions();
-    this.setDefaultFormValues();
     this.getDetail(this.transactionId);
   }
 
@@ -97,13 +99,11 @@ export class TransactionEditDialogComponent implements OnInit {
   }
 
   onSubmitClick() {
+    this.form.markAllAsTouched();
+    if (this.form.invalid) {
+      return;
+    }
     this.onFormSubmit(this.form.value);
-  }
-
-  setDefaultFormValues() {
-    this.form.patchValue({
-      issuedTime: new Date(),
-    })
   }
 
   setFormValues(transaction: Transaction) {

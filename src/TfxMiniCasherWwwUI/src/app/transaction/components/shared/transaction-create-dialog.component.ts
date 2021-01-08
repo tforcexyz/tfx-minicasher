@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { NbDialogRef } from '@nebular/theme';
 import { OnInit } from '@angular/core';
 
@@ -18,7 +20,7 @@ export class TransactionCreateDialogComponent implements OnInit {
 
   creditAccountOptions: KeyValuePair<string, string>[];
   debitAccountOptions: KeyValuePair<string, string>[];
-  form: any;
+  form: FormGroup;
   isDataLoaded: boolean;
   isDataSubmitting: boolean;
   remoteDataCounter: number;
@@ -28,11 +30,11 @@ export class TransactionCreateDialogComponent implements OnInit {
     protected ref: NbDialogRef<TransactionCreateDialogComponent>,
     private transactionDataService: TransactionDataService) {
       this.form = this.formBuilder.group({
-        amount: null,
-        creditAccountId: null,
-        debitAccountId: null,
-        issuedTime: null,
-        name: null,
+        amount: new FormControl(0, [Validators.required, Validators.min(0)]),
+        creditAccountId: new FormControl(null, Validators.required),
+        debitAccountId: new FormControl(null, Validators.required),
+        issuedTime: new FormControl(new Date(), Validators.required),
+        name: new FormControl(null, Validators.required),
       })
   }
 
@@ -47,7 +49,6 @@ export class TransactionCreateDialogComponent implements OnInit {
   ngOnInit(): void {
     this.remoteDataCounter = 0;
     this.initParentAccountOptions();
-    this.setDefaultFormValues();
   }
 
   onCancelClick() {
@@ -78,6 +79,10 @@ export class TransactionCreateDialogComponent implements OnInit {
   }
 
   onSubmitClick() {
+    this.form.markAllAsTouched();
+    if (this.form.invalid) {
+      return;
+    }
     this.onFormSubmit(this.form.value);
   }
 
@@ -86,12 +91,6 @@ export class TransactionCreateDialogComponent implements OnInit {
     if (this.remoteDataCounter >= 1) {
       this.isDataLoaded = true;
     }
-  }
-
-  setDefaultFormValues() {
-    this.form.patchValue({
-      issuedTime: new Date(),
-    })
   }
 
   private createParentAccountOptions(accountHierarchies: AccountHierarchy[], level: number): KeyValuePair<string, string>[] {
