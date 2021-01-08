@@ -14,6 +14,11 @@ export class TransactionCreateResponse {
   transactionId: string;
 }
 
+export class TransactionDeleteResponse {
+  isSuccess: boolean;
+  transactionId: string;
+}
+
 export class TransactionEditRequest {
   amount: number;
   creditAccountId: string;

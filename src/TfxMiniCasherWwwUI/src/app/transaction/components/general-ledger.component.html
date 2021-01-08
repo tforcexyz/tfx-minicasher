@@ -28,7 +28,7 @@
         <td>
           <a (click)="onItemEditClick(transaction.id)" href="javascript:void(0)" title="Edit"><nb-icon icon="edit" pack="far"></nb-icon></a>
           &nbsp;
-          <a href="javascript:void(0)" title="Delete"><nb-icon icon="trash" pack="far"></nb-icon></a>
+          <a (click)="onItemDeleteClick(transaction.id)" href="javascript:void(0)" title="Delete"><nb-icon icon="trash" pack="far"></nb-icon></a>
         </td>
       </tr>
     </tbody>

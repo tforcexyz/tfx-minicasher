@@ -3,6 +3,7 @@ import { NbDialogRef } from '@nebular/theme';
 import { NbDialogService } from '@nebular/theme';
 import { OnInit } from '@angular/core';
 
+import { ConfirmDialogService } from '../../@extend/services/confirm-dialog.service';
 import { TransactionCreateDialogComponent } from './shared/transaction-create-dialog.component';
 import { TransactionCreateDialogResult } from './shared/transaction-create-dialog.component';
 import { TransactionDataService } from '../../@data/services';
@@ -22,7 +23,8 @@ export class GeneralLedgerComponent implements OnInit {
   isLoaded: boolean;
   transactions: TransactionLite[];
 
-  constructor(private dialogService: NbDialogService,
+  constructor(private confirmDialogService: ConfirmDialogService,
+    private dialogService: NbDialogService,
     private transactionDataService: TransactionDataService) {
   }
 
@@ -39,6 +41,18 @@ export class GeneralLedgerComponent implements OnInit {
     this.createDialogRef.onClose.subscribe((result: TransactionCreateDialogResult) => {
       if(result.refresh) {
         this.searchTransactions();
+      }
+    })
+  }
+
+  onItemDeleteClick(id: string) {
+    this.confirmDialogService.confirm('Are you sure to delete this transaction?').subscribe(result => {
+      if (result.confirmed) {
+        this.transactionDataService.deleteTransaction(id).subscribe((response) => {
+          if (response.isSuccess) {
+            this.searchTransactions();
+          }
+        })
       }
     })
   }
