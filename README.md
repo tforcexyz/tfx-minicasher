@@ -1,2 +1,2 @@
-# tfx minicasher
-Personal Cash Management
+# TFX MINICASHER
+Personal Expense Management
